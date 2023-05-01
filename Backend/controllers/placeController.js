@@ -133,7 +133,7 @@ const placeControllers = {
         const rating = req.body.rating;
         const comment = req.body.comment
         const place = await Place.findById(req.params.id);
-        if(product){
+        if(place){
             const alreadyReview = place.reviews.find(
                 (r) => r.user.toString() === req.user.id.toString()
               );
@@ -154,7 +154,7 @@ const placeControllers = {
                 avg += rev.rating;
             });
             if(place.reviews.length > 0){
-               place.ratings = avg / place.reviews.length;
+               place.ratings = (avg / place.reviews.length).toFixed(2);
             }
             try {
                 const updatedPlace = await place.save();
@@ -190,11 +190,11 @@ const placeControllers = {
         if (reviews.length === 0) {
           ratings = 0;
         } else {
-          ratings = avg / reviews.length;
+          ratings = (avg / reviews.length).toFixed(2);
         }
         const numReviews = reviews.length;
         try {
-            await Product.findByIdAndUpdate(
+            await Place.findByIdAndUpdate(
                 req.query.id,
                 {
                   reviews,
