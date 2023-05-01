@@ -10,7 +10,8 @@ const userRouter = require("./routes/users");
 const placeRouter = require("./routes/place");
 const roomRouter = require("./routes/room");
 const siteRouter = require("./routes/site");
-const blogRouter = require("./routes/blog")
+const blogRouter = require("./routes/blog");
+const bookingRouter = require("./routes/booking")
 
 const app = express();
 dotenv.config();
@@ -26,6 +27,7 @@ app.use("/api/place", placeRouter);
 app.use("/api/room", roomRouter);
 app.use("/api/site", siteRouter);
 app.use("/api/blog", blogRouter);
+app.use("/api/book", bookingRouter)
 
 const PORT = process.env.PORT || 5000;
 const URI = process.env.DB_URL;

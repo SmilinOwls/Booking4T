@@ -31,7 +31,6 @@ const bookingSchema = new mongoose.Schema({
     place: {
         type: mongoose.Schema.ObjectId,
         ref: "Place",
-        required: true
     },
     user: {
         type: mongoose.Schema.ObjectId,
