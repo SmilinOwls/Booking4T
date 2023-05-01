@@ -71,6 +71,9 @@ const BookingControllers = {
     },
     updateStock: async(id, quantity) => {
         const room = await Room.findById(id);
+        if(!room){
+            return res.status(404).json("Room not found !!!");
+        }
         if(!room.countInStock){
             product.countInStock = -1;
         }
@@ -99,20 +102,21 @@ const BookingControllers = {
     },
     updateOrder: async(req, res) => {
         try {
+            const {
+                paymentMethod,
+                orderStatus,
+                taxPrice,
+                checkOut
+            } = req.body;
             const order = await Booking.findById(req.params.id);
             if(!order){
                 return res.status(404).json("Order not found !!!");
             }
-            const updatedOrder = await Booking.findByIdAndUpdate(
-                req.params.id,
-                {
-                    paymentMethod: req.body.paymentMethod,
-                    orderStatus: req.body.orderStatus,
-                    taxPrice: req.body.taxPrice,
-                    orderStatus: req.body.orderStatus  
-                },
-                {new: true}
-            );
+            order.paymentMethod = paymentMethod || order.paymentMethod,
+            order.orderStatus = orderStatus || order.orderStatus,
+            order.taxPrice= taxPrice || order.taxPrice,
+            order.checkOut = checkOut || order.checkOut
+            const updatedOrder = await order.save();
             res.status(200).json(updatedOrder);
         } catch (error) {
             res.status(500).json(error);
