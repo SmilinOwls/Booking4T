@@ -17,6 +17,6 @@ router.put("/admin/:id", bookingController.updateOrder);
 router.put("/status/:id", bookingController.updateOrderByStatus);
 
 //Delete order
-
+router.delete("/admin/:id", bookingController.deleteOrder);
 
 module.exports = router;

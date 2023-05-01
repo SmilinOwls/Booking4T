@@ -122,6 +122,20 @@ const BookingControllers = {
             res.status(500).json(error);
         }
     },
+    deleteOrder: async(req, res) => {
+        try {
+            const order = await Booking.findById(req.params.id);
+            if(!order){
+                return res.status(404).json("Order not found !!!");
+            }
+            await order.remove();
+            res.status(200).json({
+                message: "Order has been deleted"
+            })
+        } catch (error) {
+            res.status(500).json(error);
+        }
+    }
 };
 
 module.exports = BookingControllers
