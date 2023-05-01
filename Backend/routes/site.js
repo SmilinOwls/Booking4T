@@ -1,8 +1,9 @@
 const siteControllers = require("../controllers/siteController");
+const authMiddleware = require("../middleware/authMiddleware");
 const router = require("express").Router();
 
 // Create Site
-router.post("/", siteControllers.createSite);
+router.post("/", authMiddleware.authorizeRole, siteControllers.createSite);
 
 //Get all sites
 router.get("/", siteControllers.getAllSites);
@@ -11,6 +12,6 @@ router.get("/", siteControllers.getAllSites);
 router.get("/:id", siteControllers.getSiteById);
 
 //Delete site
-router.delete("/:id", siteControllers.deleteSite)
+router.delete("/:id", authMiddleware.authorizeRole, siteControllers.deleteSite)
 
 module.exports = router;

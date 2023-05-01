@@ -13,7 +13,7 @@ router.get("/:id", authMiddleware.authorizeRole, userControllers.getUserById);
 router.put("/admin/:id", authMiddleware.authorizeRole, userControllers.updateUser);
 
 // Delete user
-router.delete("/admin/:id", userControllers.deleteUser);
+router.delete("/admin/:id", authMiddleware.authorizeRole, userControllers.deleteUser);
 
 // Get Profile
 router.route("/me/profile").get(authMiddleware.verifyToken, userControllers.getUserProfile);
