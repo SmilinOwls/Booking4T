@@ -212,6 +212,17 @@ const placeControllers = {
             res.status(500).json(error);
         }
     },
+    uploadImage: async(req, res) => {
+        const {file} = req;
+        const urlImage = `${file.path}`;
+        try{
+          res.status(200).json({
+            placePic: urlImage
+          });
+        }catch(error){
+            res.status(500).json(error);
+         }
+      }
 }
 
 module.exports = placeControllers

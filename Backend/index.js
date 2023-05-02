@@ -5,13 +5,24 @@ const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const path = require("path");
+const imageDownloader = require('image-downloader');
+const {S3Client, PutObjectCommand} = require('@aws-sdk/client-s3');
+const mime = require("mime-types");
+const fs = require("fs")
+
 const authRouter = require("./routes/auth");
 const userRouter = require("./routes/users");
 const placeRouter = require("./routes/place");
 const roomRouter = require("./routes/room");
 const siteRouter = require("./routes/site");
 const blogRouter = require("./routes/blog");
-const bookingRouter = require("./routes/booking")
+const bookingRouter = require("./routes/booking");
+
+const bucket = '4T-booking-app';
+
+const uploadToS3 = async() => {
+    
+}
 
 const app = express();
 dotenv.config();
