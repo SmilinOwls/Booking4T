@@ -74,6 +74,18 @@ const blogControllers = {
         } catch (error) {
             console.log(error)
         }
+    },
+
+    uploadBlogs: (req, res) => {
+        const {file} = req;
+        const urlImage = `${file.path}`;
+      try{
+        res.status(200).json({
+          blogPic: urlImage
+        });
+      }catch(error){
+          res.status(500).json(error);
+       }
     }
 
 };

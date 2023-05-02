@@ -5,10 +5,8 @@ const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const path = require("path");
-const imageDownloader = require('image-downloader');
-const {S3Client, PutObjectCommand} = require('@aws-sdk/client-s3');
-const mime = require("mime-types");
 const fs = require("fs")
+const multer = require("multer")
 
 const authRouter = require("./routes/auth");
 const userRouter = require("./routes/users");
@@ -18,19 +16,52 @@ const siteRouter = require("./routes/site");
 const blogRouter = require("./routes/blog");
 const bookingRouter = require("./routes/booking");
 
-const bucket = '4T-booking-app';
-
-const uploadToS3 = async() => {
-    
-}
 
 const app = express();
 dotenv.config();
-app.use(cors());
+app.use(cors({
+    credentials: true,
+    origin: "http://127.0.0.1.5173"
+}));
 app.use(cookieParser());
 app.use(express.json());
 const publicPath = path.join(__dirname, "./public");
 app.use("/public", express.static(publicPath));
+
+const storage = multer.diskStorage({
+    destination: function(req, file, cb){
+        cb(null, "./public/images/uploads")
+    }
+});
+
+const photoMiddleware = multer({
+    storage: storage,
+    fileFilter: function(req, file, cb){
+        const extensionImageList = [".png", ".jpg", ".jpeg", ".webp"];
+        const extension = file.originalname.slice(-4);
+        const check = extensionImageList.includes(extension);
+        if(check){
+            cb(null, true);
+        }else{
+            cb(new Error("extention không hợp lệ"))
+        }
+    }
+})
+
+app.post("/api/upload-photo", photoMiddleware.array("photos", 100), (req, res) => {
+    const uploadedFiles = [];
+    for(let i = 0; i < req.files.length; i++){
+        const {path, originalname} = req.files[i];
+        const parts= originalname.split(".");
+        const ext = parts[parts.length - 1];
+        const newPath = path + '.' + ext;
+        fs.renameSync(path, newPath);
+        uploadedFiles.push(newPath)
+    }
+    res.status(200).json(uploadedFiles)
+})
+
+
 
 app.use("/api/auth", authRouter);
 app.use("/api/user", userRouter);
