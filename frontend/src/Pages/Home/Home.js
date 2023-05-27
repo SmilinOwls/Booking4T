@@ -9,6 +9,8 @@ import experience from "../../Assets/images/experience.jpg";
 import Searchbar from "./Components/SearchBar/Searchbar";
 import Process from "./Components/Process/Process";
 import ServiceList from "./Components/ServiceList/ServiceList";
+import Reviews from "./Components/Reviews/Reviews";
+import Contact from "./Components/Contact/Contact";
 
 const Home = () => {
   return (
@@ -60,6 +62,61 @@ const Home = () => {
           </Row>
         </Container>
       </section>
+      <section>
+        <Container>
+          <Row>
+            <Col lg='6'>
+              <div className="experience__content">
+              <h3 className="section__subtitle">Experience</h3>
+
+                <h2>With our all experience <br /> we will serve you</h2>
+                <p>
+                    Stay in our world of comfort and style
+                  <br />
+                  Experience the difference services
+                </p>
+              </div>
+
+              <div className="counter__wrapper d-flex align-items-center gap-5">
+                <div className="counter__box">
+                  <span>60+</span>
+                  <h6>Hotels</h6>
+                </div>
+
+                <div className="counter__box">
+                  <span>100+</span>
+                  <h6>Special Services</h6>
+                </div>
+
+                <div className="counter__box">
+                  <span>4</span>
+                  <h6>Years experiecne</h6>
+                </div>
+              </div>
+            </Col>
+
+            <Col lg='6'>
+              <div className="experience__img">
+                <img src={experience} alt="" />
+              </div>
+            </Col>
+          </Row>
+        </Container>
+      </section>
+      <section>
+        <Container>
+          <Row>
+            <Col lg='12'>
+            <h3 className="section__subtitle">Reviews</h3>
+              <h2 className="testimonial__title">What our fans say about us</h2>
+            </Col>
+            <Col lg='12'>
+              <Reviews />
+            </Col>
+          </Row>
+        </Container>
+      </section>
+      <Contact />
     </>
   );
 };
