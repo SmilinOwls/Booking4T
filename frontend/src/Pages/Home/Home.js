@@ -11,6 +11,7 @@ import Process from "./Components/Process/Process";
 import ServiceList from "./Components/ServiceList/ServiceList";
 import Reviews from "./Components/Reviews/Reviews";
 import Contact from "./Components/Contact/Contact";
+import FeatureHotels from "./Components/FeatureHotels";
 
 const Home = () => {
   return (
@@ -59,6 +60,17 @@ const Home = () => {
               <h2 className='services__ttle'>We offer our best services</h2>
             </Col>
             <ServiceList />
+          </Row>
+        </Container>
+      </section>
+      <section>
+        <Container>
+          <Row>
+            <Col lg='12'>
+            <h3 className="section__subtitle">Hotels</h3>
+              <h2 className="testimonial__title">Featured homes recommended for you</h2>
+            </Col>
+            <FeatureHotels />
           </Row>
         </Container>
       </section>
