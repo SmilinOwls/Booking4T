@@ -28,7 +28,7 @@ const upload = multer({
 router.post("/upload-news", upload.single("news"), siteControllers.uploadTitleNews);
 
 // Create Site
-router.post("/", authMiddleware.authorizeRole, siteControllers.createSite);
+router.post("/admin", authMiddleware.authorizeRole, siteControllers.createSite);
 
 //Get all sites
 router.get("/", siteControllers.getAllSites);
@@ -37,6 +37,6 @@ router.get("/", siteControllers.getAllSites);
 router.get("/:id", siteControllers.getSiteById);
 
 //Delete site
-router.delete("/:id", authMiddleware.authorizeRole, siteControllers.deleteSite)
+router.delete("/admin/:id", authMiddleware.authorizeRole, siteControllers.deleteSite)
 
 module.exports = router;
