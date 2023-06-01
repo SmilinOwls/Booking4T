@@ -59,7 +59,7 @@ const Header = () => {
               <ul className="menu d-flex align-items-center gap-5">
                 {nav_links.map((item, index) => {
                   return (
-                    <>
+                    <React.Fragment key={index}>
                       <li className="nav__item" key={index}>
                         <NavLink
                           to={item.path}
@@ -70,7 +70,7 @@ const Header = () => {
                           {item.display}
                         </NavLink>
                       </li>
-                    </>
+                    </React.Fragment>
                   );
                 })}
               </ul>
