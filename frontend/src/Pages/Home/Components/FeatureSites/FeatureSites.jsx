@@ -43,7 +43,7 @@ const FeatureSites = () => {
     <div className='sitesContainer'>
         <Slider {...settings}>
         {sites.map((item) => (
-              <div className="featuredItem">
+              <div className="featuredItem" key={item._id}>
               <img
                 src={item.photo}
                 width={400}

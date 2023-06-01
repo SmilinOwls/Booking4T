@@ -2,6 +2,7 @@ import React from 'react';
 import './hotels.css'
 import {Container, Row, Col} from 'reactstrap'
 import HotelsProduct from './Hotels/HotelsProduct';
+import HotelFilter from './HotelFilter/HotelFilter';
 
 const Hotels = () => {
   return (
@@ -17,8 +18,7 @@ const Hotels = () => {
         </section>
         <Container>
             <div className='hotel__container'>
-                {/* <ShopFilter />
-                <ShopProduct /> */}
+                <HotelFilter />
                 <HotelsProduct />
             </div>
         </Container>

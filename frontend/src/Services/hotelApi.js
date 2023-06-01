@@ -11,7 +11,7 @@ const hotelApi = {
             url = '/api/place?ratings=' + ratings;
         }
         if(ratings && options){
-            url = `/api/ratings?ratings[${options}]=${ratings}`
+            url = `/api/place?ratings[${options}]=${ratings}`
         }
         return axiosClient.get(url);
     }

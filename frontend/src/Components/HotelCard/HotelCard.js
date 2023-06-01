@@ -30,11 +30,12 @@ const HotelCard = (props) => {
             <p>{extraInfo.length > 50 ? extraInfo.slice(0, 50) + "..." : extraInfo + "..."}</p>
           </div>
       </div>
-
-      <div className="shop-product__btns">
-        <div className="shop-product__btn__book">
+      <div className="card-bottom">
+        <button className="shop-product__btn__book">
           <a href="#">Book Now</a>
-        </div>
+        </button>
+      </div>
+      <div className="shop-product__btns">
         <div className="shop-product__btn">
           <BsCartPlus />
         </div>

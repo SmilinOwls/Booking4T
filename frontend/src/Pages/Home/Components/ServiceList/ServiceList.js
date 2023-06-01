@@ -7,7 +7,7 @@ const ServiceList = () => {
     <>
       {servicesData.map((item, index) => {
         return (
-          <>
+          <React.Fragment key={index}>
             <Col lg="3" md="6" sm="12" className="mb-4" key={index}>
               <div className="service__item">
                 <div className="service__img">
@@ -17,7 +17,7 @@ const ServiceList = () => {
                 <p>{item.desc}</p>
               </div>
             </Col>
-          </>
+          </React.Fragment>
         );
       })}
     </>
