@@ -1,12 +1,17 @@
 import React, {useEffect} from 'react'
 import "./FeatureSite.css";
-import Slider from 'react-slick'
+import Slider from 'react-slick';
+import {useHistory} from 'react-router-dom'
 import {useDispatch, useSelector} from 'react-redux'
 import {getSites} from '../../../../Actions/SitesAction'
 
 const FeatureSites = () => {
     const {sites, isLoading} = useSelector((state) => state.sites);
     const dispatch = useDispatch();
+    const history = useHistory()
+    const handleToDetail = (id) => {
+      history.push(`/site/${id}`);
+    };
 
     useEffect(() => {
         dispatch(getSites())
@@ -43,7 +48,7 @@ const FeatureSites = () => {
     <div className='sitesContainer'>
         <Slider {...settings}>
         {sites.map((item) => (
-              <div className="featuredItem" key={item._id}>
+              <div className="featuredItem" onClick={() => handleToDetail(item._id)} key={item._id}>
               <img
                 src={item.photo}
                 width={400}

@@ -5,7 +5,7 @@ const initialState = {
     error: null
 };
 
-function sitesReducer(state=initialState, action){
+export function sitesReducer(state=initialState, action){
     switch(action.type){
         case GET_SITE_REQUEST:{
             return {...state, isLoading:true, error: null}
@@ -20,5 +20,3 @@ function sitesReducer(state=initialState, action){
             return state;
     }
 };
-
-export default sitesReducer;

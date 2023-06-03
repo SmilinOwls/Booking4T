@@ -5,6 +5,7 @@ import Home from "./Pages/Home/Home";
 import Hotels from "./Pages/Hotels/Hotels";
 import News from "./Pages/News/News";
 import PrevFilterContext  from "./context/PrevFilterContext";
+import DetailSite from "./Pages/DetailSite";
 
 function App() {
   return (
@@ -27,6 +28,11 @@ function App() {
                 <AppLayout>
                   <News />
                 </AppLayout>
+              </Route>
+              <Route path="/site/:id" exact>
+                  <AppLayout>
+                    <DetailSite />
+                  </AppLayout>
               </Route>
             </Switch>
           </PrevFilterContext>
