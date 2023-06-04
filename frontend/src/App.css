@@ -88,9 +88,14 @@ ul {
   font-size: 1.5rem;
   color: var(--heading-color);
 }
+.section__quote {
+  font-family: var(--subtitle-font-name);
+  width: max-content;
+  font-weight: 500;
+  font-size: 2.2rem;
+}
 
 @media only screen and (max-width: 992px) {
-
   .primary__btn a,
   .secondary__btn a {
     font-size: 0.9rem;
