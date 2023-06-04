@@ -5,6 +5,9 @@ import {
   GET_SITE_DETAIL_FAILURE,
   GET_SITE_DETAIL_REQUEST,
   GET_SITE_DETAIL_SUCCESS,
+  GET_PLACE_SITE_FAILURE,
+  GET_PLACE_SITE_REQUEST, 
+  GET_PLACE_SITE_SUCCESS
 } from "../Constants/SitesConstants";
 import siteApi from "../Services/siteApi";
 
@@ -36,4 +39,19 @@ export function getDetailSite(id) {
       });
     }
   };
+}
+
+export function getPlaceBySite(id){
+  return async (dispatch) => {
+    dispatch({type: GET_PLACE_SITE_REQUEST})
+    try {
+      const { data } = await siteApi.getPlaceBySite(id);
+      dispatch({ type: GET_PLACE_SITE_SUCCESS, payload: data });
+    } catch (error) {
+      dispatch({
+        type: GET_PLACE_SITE_FAILURE,
+        error: { error },
+      });
+    }
+  }
 }

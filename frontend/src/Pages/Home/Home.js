@@ -81,7 +81,7 @@ const Home = () => {
         <Container>
           <Row>
             <Col lg='12'>
-            <h3 className="section__subtitle">Hotels</h3>
+              <h3 className="section__subtitle">Hotels</h3>
               <h2 className="testimonial__title">Featured homes recommended for you</h2>
             </Col>
             <FeatureHotels />

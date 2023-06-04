@@ -25,6 +25,9 @@ const Header = () => {
   const navigate = useHistory();
 
   const stickyHeaderFunction = () => {
+    if(headerRef.current == null){
+      return
+    }
     window.addEventListener("scroll", () => {
       if (
         document.body.scrollTop > 80 ||
@@ -37,8 +40,10 @@ const Header = () => {
     });
   };
 
+ 
+
   useEffect(() => {
-    stickyHeaderFunction();
+    stickyHeaderFunction()
 
     return window.removeEventListener("scroll", stickyHeaderFunction);
   }, []);

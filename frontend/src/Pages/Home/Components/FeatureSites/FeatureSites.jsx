@@ -18,11 +18,11 @@ const FeatureSites = () => {
     }, [])
     const settings = {
         dots: true,
-        //infinite: true,
-        //autoplay: true,
+        infinite: true,
+        autoplay: true,
         speed: 1000,
         swipeToSlide: true,
-        //autoplaySpeed: 2000,
+        autoplaySpeed: 2000,
         slidesToShow: 4,
 
         responsive : [

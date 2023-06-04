@@ -6,6 +6,9 @@ const siteApi = {
     },
     getSiteById: (siteId) => {
         return axiosClient.get("/api/site/" + siteId);
+    },
+    getPlaceBySite: (id) => {
+        return axiosClient.get("/api/place/site/" + id);
     }
 }
 
