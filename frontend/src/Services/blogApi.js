@@ -5,7 +5,7 @@ const blogApi = {
         return axiosClient.get("/api/blog/");
     },
     getDetailBlog: (blogId) => {
-        return axiosClient.get("/api/blog" + blogId)
+        return axiosClient.get("/api/blog/" + blogId)
     } 
 }
 

@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import {Link} from 'react-router-dom'
 import "./NewsCard.css"
 
 const NewsCard = ({news}) => {
@@ -17,9 +18,9 @@ const NewsCard = ({news}) => {
       <p style={{fontSize: "16px", color: "#ddd"}}>
         {news.fullText.length > 30 ? news.fullText.slice(0, 30) + "..." : news + "..."}
         {"... "}
-        <a href="#" className="readMore">
+        <Link to={`/news/${news._id}`} className="readMore">
           Read More
-        </a>
+        </Link>
       </p>
     </div>
   </div>

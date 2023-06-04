@@ -43,6 +43,7 @@ const Header = () => {
  
 
   useEffect(() => {
+    console.log(headerRef.current)
     stickyHeaderFunction()
 
     return window.removeEventListener("scroll", stickyHeaderFunction);
