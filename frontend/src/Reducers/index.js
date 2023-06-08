@@ -5,7 +5,7 @@ import { hotelsFilterReducer } from './HotelsFilterReducer';
 import blogsReducer from './BlogsReducer';
 import detailSiteReducer from './DetailSiteReducer';
 import detailBlogReducer from './DetailBlog';
-import detailHotelReducer from './DetailHotelReducer';
+import {detailHotelReducer, getRoomByHotelReducer} from './DetailHotelReducer';
 
 const rootReducer = combineReducers({
     hotels: hotelsReducer,
@@ -15,7 +15,8 @@ const rootReducer = combineReducers({
     detailSite: detailSiteReducer,
     detailBlog: detailBlogReducer,
     detailHotel: detailHotelReducer,
-    placeSite: placeSiteReducer
+    placeSite: placeSiteReducer,
+    roomAtHotel: getRoomByHotelReducer
 });
 
 export default rootReducer;

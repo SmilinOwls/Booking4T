@@ -8,7 +8,10 @@ import {
   GET_DETAIL_HOTEL_FAILURE,
   GET_DETAIL_HOTEL_SUCCESS,
   GET_DETAIL_HOTEL_REQUEST,
-  FILTER_HOTEL_BY_SORT
+  GET_ROOMS_HOTEL_FAILURE,
+  GET_ROOMS_HOTEL_REQUEST,
+  FILTER_HOTEL_BY_SORT,
+  GET_ROOMS_HOTEL_SUCCESS
 } from "../Constants/HotelsConstant";
 import hotelApi from "../Services/hotelApi";
 
@@ -57,7 +60,23 @@ export function getDetailHotel(hotelId){
       });
     }
   };
-}
+};
+
+export function getRoomByHotel(hotelId){
+  return async (dispatch) => {
+    dispatch({ type: GET_ROOMS_HOTEL_REQUEST });
+    try {
+      const { data } = await hotelApi.getRoomsByHotel(hotelId);
+      dispatch({ type: GET_ROOMS_HOTEL_SUCCESS, payload: data });
+    } catch (error) {
+      dispatch({
+        type: GET_ROOMS_HOTEL_FAILURE,
+        error: { error },
+        //payload: { error: error.response.data },
+      });
+    }
+  };
+};
 
 export function filterHotelBySort(str){
     return (dispatch) => {
