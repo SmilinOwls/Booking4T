@@ -14,6 +14,12 @@ const hotelApi = {
             url = `/api/place?ratings[${options}]=${ratings}`
         }
         return axiosClient.get(url);
+    },
+    getDetailHotel: (hotelId) => {
+        return axiosClient.get('/api/place/' + hotelId);
+    },
+    getRoomsByHotel: (hotelId) => {
+        return axiosClient.get('/api/room/allrooms/' + hotelId);
     }
 }
 

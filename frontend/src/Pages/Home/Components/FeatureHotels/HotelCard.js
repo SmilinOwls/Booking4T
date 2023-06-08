@@ -1,7 +1,7 @@
 import React from "react";
 import "./HotelCard.css";
 import { Card, CardBody } from "reactstrap";
-
+import {Link} from 'react-router-dom'
 const HotelCard = ({ hotel }) => {
   return (
     <div className="tour__card">
@@ -25,7 +25,7 @@ const HotelCard = ({ hotel }) => {
             </div>
           <div className="card__bottom">
             <button className="btn booking__btn">
-              <a href="#">Book Now</a>
+              <Link to={`hotel/${hotel._id}`}>Book Now</Link>
             </button>
           </div>
         </CardBody>

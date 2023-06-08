@@ -5,6 +5,7 @@ import { hotelsFilterReducer } from './HotelsFilterReducer';
 import blogsReducer from './BlogsReducer';
 import detailSiteReducer from './DetailSiteReducer';
 import detailBlogReducer from './DetailBlog';
+import detailHotelReducer from './DetailHotelReducer';
 
 const rootReducer = combineReducers({
     hotels: hotelsReducer,
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
     blogs: blogsReducer,
     detailSite: detailSiteReducer,
     detailBlog: detailBlogReducer,
+    detailHotel: detailHotelReducer,
     placeSite: placeSiteReducer
 });
 

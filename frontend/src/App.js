@@ -7,6 +7,7 @@ import News from "./Pages/News/News";
 import PrevFilterContext  from "./context/PrevFilterContext";
 import DetailSite from "./Pages/DetailSite";
 import DetailNews from "./Pages/DetailNews";
+import DetailHotel from "./Pages/DetailHotel";
 
 function App() {
   return (
@@ -38,6 +39,11 @@ function App() {
               <Route path="/site/:id" exact>
                   <AppLayout>
                     <DetailSite />
+                  </AppLayout>
+              </Route>
+              <Route path="/hotel/:hotelId" exact>
+                  <AppLayout>
+                    <DetailHotel />
                   </AppLayout>
               </Route>
             </Switch>

@@ -5,6 +5,9 @@ import {
   GET_HOTEL_FILTER_FAILURE,
   GET_HOTEL_FILTER_SUCCESS,
   GET_HOTEL_FILTER_REQUEST,
+  GET_DETAIL_HOTEL_FAILURE,
+  GET_DETAIL_HOTEL_SUCCESS,
+  GET_DETAIL_HOTEL_REQUEST,
   FILTER_HOTEL_BY_SORT
 } from "../Constants/HotelsConstant";
 import hotelApi from "../Services/hotelApi";
@@ -33,6 +36,22 @@ export function getHotelsFilter(ratings = "", options = "") {
     } catch (error) {
       dispatch({
         type: GET_HOTEL_FILTER_FAILURE,
+        error: { error },
+        //payload: { error: error.response.data },
+      });
+    }
+  };
+};
+
+export function getDetailHotel(hotelId){
+  return async (dispatch) => {
+    dispatch({ type: GET_DETAIL_HOTEL_REQUEST });
+    try {
+      const { data } = await hotelApi.getDetailHotel(hotelId);
+      dispatch({ type: GET_DETAIL_HOTEL_SUCCESS, payload: data });
+    } catch (error) {
+      dispatch({
+        type: GET_DETAIL_HOTEL_FAILURE,
         error: { error },
         //payload: { error: error.response.data },
       });

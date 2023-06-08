@@ -80,6 +80,29 @@ import {
      "If you come to a fork in the road, take it",
      "Discovery consists not in seeking new landscapes, but in having new eyes.",
      "A journey is a person in itself; no two are alike. And all plans, safeguards, policing, and coercion are fruitless."
+  ];
+
+  const facilitiesData = [
+    {
+      id: 1,
+      content: 'Airport transfer'
+    },
+    {
+      id: 2,
+      content: 'Car park'
+    },
+    {
+      id: 3,
+      content: 'Check-in [24-hour]'
+    },
+    {
+      id: 4,
+      content: 'Free Wi-Fi in all rooms!'
+    },
+    {
+      id: 5,
+      content: 'Kitchen'
+    }
   ]
 
   export {WorkData, servicesData, quoteNewsData}
