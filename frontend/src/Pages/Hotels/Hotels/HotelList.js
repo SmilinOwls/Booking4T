@@ -3,6 +3,7 @@ import "./HotelList.css";
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import {useDispatch, useSelector} from 'react-redux';
+
 import {getHotelsFilter} from '../../../Actions/HotelsAction';
 import HotelCard from '../../../Components/HotelCard/HotelCard';
 import HotelsEmpty from './HotelsEmpty';

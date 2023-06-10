@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPlaceBySite } from "../../Actions/SitesAction";
 import { Col } from "reactstrap";
-import HotelCard from "../Home/Components/FeatureHotels/HotelCard";
+import HotelCard from "./HotelCard";
 
 const PlacesInSite = ({ siteId }) => {
   const { placeSites, isLoading } = useSelector((state) => state.placeSite);

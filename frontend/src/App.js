@@ -8,6 +8,10 @@ import PrevFilterContext  from "./context/PrevFilterContext";
 import DetailSite from "./Pages/DetailSite";
 import DetailNews from "./Pages/DetailNews";
 import DetailHotel from "./Pages/DetailHotel";
+import DetailRoom from "./Pages/DetailRoom";
+import Signin from './Pages/Signin';
+import Signup from './Pages/Signup'
+import LogOut from "./Pages/Logout";
 
 function App() {
   return (
@@ -26,26 +30,48 @@ function App() {
                   <Hotels />
                 </AppLayout>
               </Route>
-              <Route path="/news/:blogId" exact>
-                <AppLayout>
-                   <DetailNews />
-                </AppLayout>
+              <Route path="/hotel/:hotelId" exact>
+                  <AppLayout>
+                    <DetailHotel />
+                  </AppLayout>
               </Route>
               <Route path="/news" exact>
                 <AppLayout>
                   <News />
                 </AppLayout>
               </Route>
+              <Route path="/room/:roomId" exact>
+                  <AppLayout>
+                    <DetailRoom />
+                  </AppLayout>
+              </Route>
+             
               <Route path="/site/:id" exact>
                   <AppLayout>
                     <DetailSite />
                   </AppLayout>
               </Route>
-              <Route path="/hotel/:hotelId" exact>
-                  <AppLayout>
-                    <DetailHotel />
-                  </AppLayout>
+            
+              <Route path="/new/:newId" exact>
+                <AppLayout>
+                   <DetailNews />
+                </AppLayout>
               </Route>
+              <Route path="/sign-up">
+                  <AppLayout>
+                      <Signup />
+                  </AppLayout>
+                </Route>
+                <Route path="/sign-in" exact>
+                  <AppLayout>
+                      <Signin />
+                  </AppLayout>
+                </Route>
+                <Route path="/logout">
+                  <AppLayout>
+                      <LogOut />
+                  </AppLayout>
+                </Route>
             </Switch>
           </PrevFilterContext>
         </Route>

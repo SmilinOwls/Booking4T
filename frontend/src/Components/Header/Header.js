@@ -23,7 +23,8 @@ const Header = () => {
   const headerRef = useRef(null);
   const menuRef = useRef(null);
   const navigate = useHistory();
-
+  
+  const userInfo = JSON.parse(localStorage.getItem("user"));
   const stickyHeaderFunction = () => {
     if(headerRef.current == null){
       return
@@ -83,13 +84,26 @@ const Header = () => {
             </div>
             <div className="nav__right d-flex align-items-center gap-4">
               <div className="nav__btns d-flex align-items-center gap-4">
-                <Button className="btn secondary__btn">
-                  <Link to="/signin">Login</Link>
-                </Button>
+              {
+                  userInfo ? (
+                    <>
+                      <h5 className='mb-0'>{userInfo.username}</h5>
+                      <Button className='btn primary__btn'>
+                      <Link to='/logout'>Logout</Link>
+                      </Button>
+                    </>
+                  ) : (
+                    <>
+                      <Button className='btn secondary__btn'>
+                        <Link to='/login'>Login</Link>
+                      </Button>
 
-                <Button className="btn primary__btn">
-                  <Link to="/signup">Register</Link>
-                </Button>
+                      <Button className='btn primary__btn'>
+                        <Link to='/register'>Register</Link>
+                      </Button>
+                    </>
+                  )
+                }
               </div>
               <span className="mobile__menu" onClick={toggleMenu}>
                 <i className="ri-menu-line"></i>

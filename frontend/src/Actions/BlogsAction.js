@@ -28,6 +28,7 @@ export function getDetailBlog(id){
         dispatch({ type: GET_DETAIL_BLOG_REQUEST });
         try {
           const { data } = await blogApi.getDetailBlog(id);
+          console.log(data);
           dispatch({ type: GET_DETAIL_BLOG_SUCCESS, payload: data });
         } catch (error) {
           dispatch({

@@ -9,7 +9,7 @@ function Footer() {
         <div className="row">
           <div className="col-lg-8 row">
             <div className={`my-4 ${style.FooterSection}`}>
-              <h2 className={style.H2}>Company</h2>
+              <h4 className={style.H2}>Company</h4>
               <div className={style.LinksContainer}>
                 <Link className={`${style.Link} ${style.TextLink}`} to="/about">
                   About Us
@@ -30,7 +30,7 @@ function Footer() {
             </div>
 
             <div className={`my-4 ${style.FooterSection}`}>
-              <h2 className={style.H2}>Legal</h2>
+              <h4 className={style.H2}>Legal</h4>
               <div className={style.LinksContainer}>
                 <Link className={`${style.Link} ${style.TextLink}`} to="/term">
                   Terms & Conditions
@@ -49,7 +49,7 @@ function Footer() {
           </div>
 
           <div className="col-lg-4 my-4">
-            <h2 className={`text-center ${style.H2}`}>Social Media</h2>
+            <h4 className={`text-center ${style.H2}`}>Social Media</h4>
             <div className={style.Row}>
               <a
                 className={style.Link}

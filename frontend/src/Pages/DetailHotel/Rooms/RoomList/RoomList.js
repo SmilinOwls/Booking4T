@@ -1,8 +1,10 @@
 import React from "react";
 import { Container, Row, Col } from "reactstrap";
 import { BsCheck2Circle } from "react-icons/bs";
+import {Link} from 'react-router-dom'
 const RoomList = ({ room }) => {
-  const { photos, ratings, price, perks, title } = room;
+  
+  const { photos, ratings, price, perks, title, _id } = room;
   return (
     <Container>
       <section className="w-full">
@@ -32,12 +34,12 @@ const RoomList = ({ room }) => {
               </div>
             </div>
             <div className="mt-2 text-center">
-              <a
-                href="#"
+              <Link
+                to={`/room/${_id}`}
                 className="text-[#FFE569] font-semibold hover:text-[#B70404] transition-all no-underline text-[22px]"
               >
                 Detail
-              </a>
+              </Link>
             </div>
           </Col>
           <Col lg={4} md={4} xs={12}>

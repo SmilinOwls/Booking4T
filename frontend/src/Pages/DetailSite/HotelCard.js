@@ -5,8 +5,8 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import {AiFillStar} from "react-icons/ai";
 import {BsCartPlus} from "react-icons/bs";
-const HotelCard = (props) => {
-  const { placePic, ratings, address, name, extraInfo, _id } = props;
+const HotelCard = ({hotel}) => {
+  const { placePic, ratings, address, name, extraInfo, _id } = hotel;
   return (
     <div className="shop-product">
       <div className="shop-product__img-wrapper">

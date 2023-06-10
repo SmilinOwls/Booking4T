@@ -37,8 +37,8 @@ const DetailHotel = () => {
             <div className='my-5 border border-[#DDE6ED] px-3 py-2 rounded-lg'>
                 <p className='text-[22px] font-semibold mb-3'>Facilities</p>
                 <div className='lg:flex flex-wrap gap-3'>
-                    {newArr?.map((item)=> (
-                        <div className='w-[calc(25% - 36px)] flex items-center'>
+                    {newArr?.map((item, index)=> (
+                        <div key={index} className='w-[calc(25% - 36px)] flex items-center'>
                             <AiOutlineCheck className='font-semibold'/>
                             <span className='text-md-semi-bold ml-2'> {item}</span>
                         </div>
