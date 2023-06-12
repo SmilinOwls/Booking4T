@@ -1,11 +1,16 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import {useHistory} from 'react-router-dom'
-import "./NewsCard.css"
+import "./NewsCard.css";
+import {useDispatch} from 'react-redux';
+import {getDetailBlog, getBlogs} from '../../Actions/BlogsAction'
 
 const NewsCard = ({news}) => {
+  const dispatch = useDispatch();
   const history = useHistory()
   const handleClick = () => {
+      dispatch(getBlogs());
+      dispatch(getDetailBlog(news._id));
       history.push(`/new/${news._id}`)
   }
   return (

@@ -40,6 +40,11 @@ function App() {
                   <News />
                 </AppLayout>
               </Route>
+              <Route path="/new/:newId" exact>
+                <AppLayout>
+                   <DetailNews />
+                </AppLayout>
+              </Route>
               <Route path="/room/:roomId" exact>
                   <AppLayout>
                     <DetailRoom />
@@ -50,12 +55,6 @@ function App() {
                   <AppLayout>
                     <DetailSite />
                   </AppLayout>
-              </Route>
-            
-              <Route path="/new/:newId" exact>
-                <AppLayout>
-                   <DetailNews />
-                </AppLayout>
               </Route>
               <Route path="/sign-up">
                   <AppLayout>

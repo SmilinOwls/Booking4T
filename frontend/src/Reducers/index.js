@@ -8,6 +8,7 @@ import detailBlogReducer from './DetailBlog';
 import {detailHotelReducer, getRoomByHotelReducer} from './DetailHotelReducer';
 import detailRoomReducer from './DetailRoomReducer';
 import {loginReducer, registerReducer, logoutReducer} from './AuthReducer'
+import reviewReducer from './ReviewReducer';
 
 const rootReducer = combineReducers({
     hotels: hotelsReducer,
@@ -23,6 +24,7 @@ const rootReducer = combineReducers({
     register: registerReducer,
    login: loginReducer,
    logout: logoutReducer,
+   review: reviewReducer
 });
 
 export default rootReducer;

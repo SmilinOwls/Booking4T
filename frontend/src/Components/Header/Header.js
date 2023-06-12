@@ -87,7 +87,14 @@ const Header = () => {
               {
                   userInfo ? (
                     <>
-                      <h5 className='mb-0'>{userInfo.username}</h5>
+                      <div className="mr-2 cursor-pointer">
+                        <img 
+                           src={userInfo.profilePic ? userInfo.profilePic : "https://i.pravatar.cc/150?img=56"}
+                           alt="avatar"
+                           className="rounded-full w-[40px]"
+                        />
+                      </div>
+
                       <Button className='btn primary__btn'>
                       <Link to='/logout'>Logout</Link>
                       </Button>
@@ -95,11 +102,11 @@ const Header = () => {
                   ) : (
                     <>
                       <Button className='btn secondary__btn'>
-                        <Link to='/login'>Login</Link>
+                        <Link to='/sign-in'>Login</Link>
                       </Button>
 
                       <Button className='btn primary__btn'>
-                        <Link to='/register'>Register</Link>
+                        <Link to='/sign-up'>Register</Link>
                       </Button>
                     </>
                   )

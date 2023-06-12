@@ -1,22 +1,13 @@
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getDetailBlog, getBlogs } from "../../Actions/BlogsAction";
+import { useSelector } from "react-redux";
 import { useParams, Link } from "react-router-dom";
 import { Container, Row, Col } from "reactstrap";
 import "./style.css";
 import { quoteNewsData } from "../../utils/fakeData";
 
 const DetailNews = () => {
-  const { newId } = useParams();
   const { detailBlog, isLoading } = useSelector(state => state.detailBlogs);
   const { blogs } = useSelector((state) => state.blogs);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    console.log('Rendered');
-  })
-
-  console.log(detailBlog);
   return (
     <>
       {isLoading && <div>Loading ...</div>}
@@ -48,9 +39,9 @@ const DetailNews = () => {
                     className="h-[350px] mb-4"
                   />
                   {
-                  detailBlog.fullText && (
+                  detailBlog?.fullText && (
                     <p>
-                      {detailBlog.fullText?.slice(0, detailBlog.fullText.indexOf('.') )}
+                      {detailBlog?.fullText?.slice(0, detailBlog.fullText.indexOf('.'))}
                     </p>
                   )
                 }

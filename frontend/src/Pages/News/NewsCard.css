@@ -1,35 +1,31 @@
 .cardContainer {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    padding: 7px;
-    gap: 7px;
-    transition: all;
-  }
-  
-  .cardContainer:hover {
-    transform: scale(1.1);
-  }
-  
-  .imageContainer {
-    width: 100%;
-    overflow: hidden;
-  }
-  
-  .imageContainer img {
-    object-fit: cover;
-    width: 200px;
-    height: 200px;
-  }
-  
-  .textContainer {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .readMore {
-    cursor: pointer;
-    font-weight: bold;
-    color: #FFE569;
-    text-decoration: none;
-  }
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 7px;
+  gap: 7px;
+  transition: all;
+}
+
+.imageContainer {
+  width: 100%;
+  overflow: hidden;
+}
+
+.imageContainer img {
+  object-fit: cover;
+  width: 200px;
+  height: 200px;
+}
+
+.textContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.readMore {
+  cursor: pointer;
+  font-weight: bold;
+  color: #ffe569;
+  text-decoration: none;
+}

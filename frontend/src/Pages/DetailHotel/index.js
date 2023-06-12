@@ -9,6 +9,7 @@ import DetailMain from './DetailMain/DetailMain';
 import {AiOutlineCheck} from 'react-icons/ai'
 import RoomList from './Rooms/RoomList/RoomList';
 import FAQ from './FAQ/FAQ';
+import DetailComment from './DetailReview/DetailComment';
 
 const DetailHotel = () => {
     const {hotelId} = useParams();
@@ -60,6 +61,7 @@ const DetailHotel = () => {
                 <p className='text-[22px] font-semibold'>Frequently asked questions</p>
                 <FAQ />
             </div>
+            <DetailComment detailHotel={detailHotel}/>
         </Container>
     </div>
   )
