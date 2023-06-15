@@ -1,27 +1,21 @@
 import React, {useState, useEffect} from 'react';
 import { PayPalButtons, PayPalScriptProvider} from "@paypal/react-paypal-js";
-import useTotalPrice from '../../utils/customPrice';
+import useTotalPrice from '../../../utils/usePrice';
 import {useHistory} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
-import {getProfile} from '../../actions/UserAction';
 
 
 function PaypalCheckoutButton(props) {
-  const {orderList, setIsPaid} = props;
-  console.log(orderList)
+  const {handleCreateOrder} = props;
   const [error, setError] = useState(null);
   // const {profile, isLoading} = useSelector((state) => state.userProfile);
   const history = useHistory();
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const { totalPrice } = useTotalPrice();
 
-  // useEffect(() => {
-  //   dispatch(getProfile())
-  // }, [getProfile])
 
-  const handleApprove = (order) => {
-    
-    setIsPaid(true)
+  const handleApprove = (orderId) => {
+    handleCreateOrder();
     localStorage.removeItem("cart");
     localStorage.removeItem("payment")
   };

@@ -8,7 +8,7 @@ import {
   MY_ORDER_FAILURE,
   MY_ORDER_SUCCESS,
   MY_ORDER_REQUEST,
-} from "../Constants/OrderConstant";
+} from "../Constants/BookingConstant";
 import axios from "../Services/axios";
 import axiosClient from "../Services/axiosClient";
 
@@ -19,17 +19,16 @@ export const createOrder = (order) => {
       const data = {
         userInfo: order.userInfo,
         cart: order.cart,
-        checkOut: order.checkOut,
-        checkIn: order.checkIn,
-        numOfGuest: order.numOfGuest,
         paymentMethod: order.paymentMethod,
-        paidAt: order.paidAt,
         taxPrice: order.taxPrice,
         totalPrice: order.totalPrice,
+        checkOut: order.checkOut,
+        checkIn: order.checkIn,
+        numOfGuest: Number.parseInt(order.numOfGuest),
       };
       const userInfo = JSON.parse(localStorage.getItem("user"));
       const method = "post";
-      let url = `/book`;
+      let url = '/book';
       const headers = {
         "Content-Type": "application/json",
       };
@@ -38,11 +37,13 @@ export const createOrder = (order) => {
         headers.token = `Bearer ${accessToken}`;
       }
 
-      await axios({ url, method, data, headers }).then((response) => {
+      await axios({ url, method, data, headers}).then((response) => {
+        console.log(response);
         dispatch({ type: CREATE_ORDER_SUCCESS, payload: response.data });
       });
     } catch (error) {
-      dispatch({ type: CREATE_ORDER_FAILURE, payload: error });
+      console.log("err->", error.response.data)
+      dispatch({ type: CREATE_ORDER_FAILURE, payload: error.response.data });
     }
   };
 };

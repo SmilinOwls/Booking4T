@@ -13,6 +13,7 @@ import Signin from './Pages/Signin';
 import Signup from './Pages/Signup'
 import LogOut from "./Pages/Logout";
 import Payment from "./Pages/Payment";
+import ThankYou from "./Pages/Thankyou";
 
 function App() {
   return (
@@ -54,6 +55,11 @@ function App() {
               <Route path="/payment" exact>
                   <AppLayout>
                     <Payment />
+                  </AppLayout>
+              </Route>
+              <Route path="/thank-you" exact>
+                  <AppLayout>
+                    <ThankYou />
                   </AppLayout>
               </Route>
               <Route path="/site/:id" exact>

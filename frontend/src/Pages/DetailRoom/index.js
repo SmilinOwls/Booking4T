@@ -55,7 +55,7 @@ const DetailRoom = () => {
       const data = {
          fullName: user.fullName,
          phone: user.phone,
-         IndentifyCard: user.IndentifyCard
+         IdentifyCard: user.IndentifyCard
       }
       dispatch(saveUserInfo(data));
       localStorage.setItem("numOfGuest", numberOfGuests);

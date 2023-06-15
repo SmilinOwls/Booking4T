@@ -4,7 +4,7 @@ import useTotalPrice from "../../../utils/usePrice";
 import "./CheckoutAside.css";
 const CheckoutAside = () => {
   const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
-  const numOfGuest = localStorage.getItem("numOfGuest") || 0;
+  const maxGuest = localStorage.getItem("numOfGuest") || 0;
   const checkOut = localStorage.getItem("checkOut") || "";
   const checkIn = localStorage.getItem("checkIn") || "";
   const { totalPrice, discount } = useTotalPrice();
@@ -12,7 +12,7 @@ const CheckoutAside = () => {
     <aside className="mb-3">
       {cartItems.length > 0 ? (
         <ul className="checkout-products">
-          {cartItems.map(({ id, title, image, qnt, price, maxGuests }) => (
+          {cartItems.map(({ id, title, image, qnt, price, numOfGuest }) => (
             <>
               <li key={id} className="checkout-product">
                 <div className="checkout-product__img">
@@ -25,7 +25,7 @@ const CheckoutAside = () => {
                 <span className="checkout-product__price">${price}</span>
               </li>
               <div className="mt-3">
-                  <p className="text-[20px] mr-2">Max of Guest: {numOfGuest || maxGuests}</p>
+                  <p className="text-[20px] mr-2">Max of Guest: {maxGuest === 0 ? numOfGuest : maxGuest}</p>
               </div>
               <div className="mt-3">
                   <p className="text-[20px] mr-2">Check in: {new Date(checkIn).toLocaleDateString('en-US')}</p>

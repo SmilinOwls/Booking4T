@@ -27,11 +27,6 @@ const Payment = () => {
                 setIsCheckoutSuccess={setIsCheckoutSuccess}
                 setIsPurchased={setIsPurchased}
               />
-              : (
-              <div style={{ fontSize: "1.2rem", fontWeight: "500" }}>
-                No Payment !!!
-              </div>
-              )
             </>
           ) : (
             <h2 style={{ marginTop: "15px", color: "#F24C3D" }}>

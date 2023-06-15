@@ -2,7 +2,7 @@ import {ADD_CART_ITEM, REMOVE_CART_ITEM, SAVE_PAYMENT_METHOD, SAVE_USER_INFO} fr
 
 const initialState = {
     cartItems: JSON.parse(localStorage.getItem("cart")) || [],
-    userAdress: {},
+    userAddress: {},
     paymentMethod: "",
 }
 
@@ -31,7 +31,7 @@ function cartReducer(state=initialState, action){
         case SAVE_USER_INFO: {
             const newShip = action.payload;
             localStorage.setItem("userAddress", JSON.stringify(newShip))
-            return {...state, userAdress: newShip}
+            return {...state, userAddress: newShip}
         }
 
         case SAVE_PAYMENT_METHOD: {
