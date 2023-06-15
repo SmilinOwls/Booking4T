@@ -11,7 +11,8 @@ const BookingControllers = {
             taxPrice,
             totalPrice,
             checkIn,
-            checkOut
+            checkOut,
+            numOfGuest
         } = req.body
         try {
             const order = await Booking({
@@ -23,7 +24,8 @@ const BookingControllers = {
                 totalPrice,
                 checkIn,
                 checkOut,
-                paidAt: Date.now()
+                paidAt: Date.now(),
+                numOfGuest
             });
             const newOrder = await order.save();
             res.status(201).json(newOrder);

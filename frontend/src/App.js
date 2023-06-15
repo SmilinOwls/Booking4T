@@ -12,6 +12,7 @@ import DetailRoom from "./Pages/DetailRoom";
 import Signin from './Pages/Signin';
 import Signup from './Pages/Signup'
 import LogOut from "./Pages/Logout";
+import Payment from "./Pages/Payment";
 
 function App() {
   return (
@@ -50,7 +51,11 @@ function App() {
                     <DetailRoom />
                   </AppLayout>
               </Route>
-             
+              <Route path="/payment" exact>
+                  <AppLayout>
+                    <Payment />
+                  </AppLayout>
+              </Route>
               <Route path="/site/:id" exact>
                   <AppLayout>
                     <DetailSite />

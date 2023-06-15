@@ -9,6 +9,8 @@ import {detailHotelReducer, getRoomByHotelReducer} from './DetailHotelReducer';
 import detailRoomReducer from './DetailRoomReducer';
 import {loginReducer, registerReducer, logoutReducer} from './AuthReducer'
 import reviewReducer from './ReviewReducer';
+import cartReducer from './CartReducer';
+import { myOrderList, orderReducer } from './BookingReducer';
 
 const rootReducer = combineReducers({
     hotels: hotelsReducer,
@@ -24,7 +26,10 @@ const rootReducer = combineReducers({
     register: registerReducer,
    login: loginReducer,
    logout: logoutReducer,
-   review: reviewReducer
+   review: reviewReducer,
+   cart: cartReducer,
+   order: orderReducer,
+   myOrder: myOrderList
 });
 
 export default rootReducer;

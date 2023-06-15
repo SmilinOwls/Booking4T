@@ -25,30 +25,30 @@ const Header = () => {
   const navigate = useHistory();
   
   const userInfo = JSON.parse(localStorage.getItem("user"));
-  const stickyHeaderFunction = () => {
-    if(headerRef.current == null){
-      return
-    }
-    window.addEventListener("scroll", () => {
-      if (
-        document.body.scrollTop > 80 ||
-        document.documentElement.scrollTop > 80
-      ) {
-        headerRef.current.classList.add("sticky__header");
-      } else {
-        headerRef.current.classList.remove("sticky__header");
-      }
-    });
-  };
+  // const stickyHeaderFunction = () => {
+  //   if(headerRef.current == null){
+  //     return
+  //   }
+  //   window.addEventListener("scroll", () => {
+  //     if (
+  //       document.body.scrollTop > 80 ||
+  //       document.documentElement.scrollTop > 80
+  //     ) {
+  //       headerRef.current.classList.add("sticky__header");
+  //     } else {
+  //       headerRef.current.classList.remove("sticky__header");
+  //     }
+  //   });
+  // };
 
  
 
-  useEffect(() => {
-    console.log(headerRef.current)
-    stickyHeaderFunction()
+  // useEffect(() => {
+  //   //console.log(headerRef.current)
+  //   //stickyHeaderFunction()
 
-    return window.removeEventListener("scroll", stickyHeaderFunction);
-  }, []);
+  //   return window.removeEventListener("scroll", stickyHeaderFunction);
+  // }, []);
 
   const toggleMenu = () => {
     menuRef.current.classList.toggle("show__menu");
