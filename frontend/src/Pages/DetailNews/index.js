@@ -1,13 +1,23 @@
 import React, { useEffect } from "react";
-import { useSelector } from "react-redux";
-import { useParams, Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { useParams, Link, useHistory } from "react-router-dom";
 import { Container, Row, Col } from "reactstrap";
 import "./style.css";
 import { quoteNewsData } from "../../utils/fakeData";
+import {getDetailBlog} from '../../Actions/BlogsAction'
 
 const DetailNews = () => {
+  const {newId} = useParams()
   const { detailBlog, isLoading } = useSelector(state => state.detailBlogs);
   const { blogs } = useSelector((state) => state.blogs);
+  const history = useHistory();
+  const dispatch = useDispatch();
+  const handleClick = (item) => {
+    history.push(`/new/${item._id}`)
+  }
+  useEffect(() => {
+    dispatch(getDetailBlog(newId))
+  }, [newId]);
   return (
     <>
       {isLoading && <div>Loading ...</div>}
@@ -38,13 +48,6 @@ const DetailNews = () => {
                     width="100%"
                     className="h-[350px] mb-4"
                   />
-                  {
-                  detailBlog?.fullText && (
-                    <p>
-                      {detailBlog?.fullText?.slice(0, detailBlog.fullText.indexOf('.'))}
-                    </p>
-                  )
-                }
 
                   {detailBlog?.detailPhotos.length !== 0 && (
                     <img
@@ -55,9 +58,7 @@ const DetailNews = () => {
                     />
                   )}
                   <p>
-                    {detailBlog.fullText?.slice(
-                      detailBlog.fullText.indexOf(".")
-                    )}
+                    {detailBlog.fullText}
                   </p>
                 </div>
                 <div className="mt-4">
@@ -75,13 +76,13 @@ const DetailNews = () => {
               <p className="text-[25px] font-medium leading-3">Popular Blogs</p>
               {blogs.slice(0, 7).map((item, index) => (
                 <div>
-                  <Link
-                    to={`/news/${item._id}`}
+                  <a
+                    onClick={() => handleClick(item)}
                     key={item._id}
-                    className="mt-3 no-underline"
+                    className="mt-3 no-underline cursor-pointer"
                   >
                     {index + 1}. {item.title}
-                  </Link>
+                  </a>
                 </div>
               ))}
             </Col>

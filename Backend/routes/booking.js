@@ -4,14 +4,13 @@ const router = require("express").Router();
 
 //Create Booking
 router.post("/", authMiddleware.verifyToken, bookingController.createOrder);
+//Get my orders
+router.get("/me", authMiddleware.verifyToken, bookingController.getMyOrders);
 
 //Get all orders
 router.get("/", authMiddleware.authorizeRole, bookingController.getAllOrders);
 //Get detail order
 router.get("/:id", authMiddleware.authorizeRole, bookingController.getOrderById);
-
-//Get my orders
-router.get("/me", authMiddleware.verifyToken, bookingController.getMyOrders);
 
 //Update order
 router.put("/admin/:id", authMiddleware.authorizeRole, bookingController.updateOrder);

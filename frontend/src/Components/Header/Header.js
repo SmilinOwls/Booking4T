@@ -88,11 +88,14 @@ const Header = () => {
                   userInfo ? (
                     <>
                       <div className="mr-2 cursor-pointer">
-                        <img 
+                        <Link to="/account">
+                          <img 
                            src={userInfo.profilePic ? userInfo.profilePic : "https://i.pravatar.cc/150?img=56"}
                            alt="avatar"
                            className="rounded-full w-[40px]"
-                        />
+                          />
+                        </Link>
+                        
                       </div>
 
                       <Button className='btn primary__btn'>

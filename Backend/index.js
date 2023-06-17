@@ -59,6 +59,19 @@ app.post("/api/upload-photo", photoMiddleware.array("photos", 100), (req, res) =
         uploadedFiles.push(newPath)
     }
     res.status(200).json(uploadedFiles)
+});
+
+app.post("/api/upload-room", photoMiddleware.array("photoRooms", 100), (req, res) => {
+    const uploadedFiles = [];
+    for(let i = 0; i < req.files.length; i++){
+        const {path, originalname} = req.files[i];
+        const parts= originalname.split(".");
+        const ext = parts[parts.length - 1];
+        const newPath = path + '.' + ext;
+        fs.renameSync(path, newPath);
+        uploadedFiles.push(newPath)
+    }
+    res.status(200).json(uploadedFiles)
 })
 
 
