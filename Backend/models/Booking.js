@@ -13,9 +13,8 @@ const cartSchema = new mongoose.Schema({
         type: Number,
         required: true,
     },
-    numOfDay: {
+    numOfDays: {
         type: Number,
-        required: true
     },
     maxGuests: {
         type: Number,
@@ -45,16 +44,16 @@ const bookingSchema = new mongoose.Schema({
         fullName: {
             type: String,
         },
-        phone: String,
-        IdentifyCard: String
+        phone: {type: String},
+        IdentifyCard: {type: String}
     },
     cart: [cartSchema],
     checkIn:{
-        type: Date,
+        type: String,
         required: true
     },
     checkOut: {
-        type: Date,
+        type: String,
         required: true
     },
     numOfGuest: {

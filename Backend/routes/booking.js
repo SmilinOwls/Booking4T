@@ -3,7 +3,7 @@ const authMiddleware = require("../middleware/authMiddleware")
 const router = require("express").Router();
 
 //Create Booking
-router.post("/", bookingController.createOrder);
+router.post("/", authMiddleware.verifyToken, bookingController.createOrder);
 
 //Get all orders
 router.get("/", authMiddleware.authorizeRole, bookingController.getAllOrders);
@@ -11,7 +11,7 @@ router.get("/", authMiddleware.authorizeRole, bookingController.getAllOrders);
 router.get("/:id", authMiddleware.authorizeRole, bookingController.getOrderById);
 
 //Get my orders
-router.get("/me", bookingController.getMyOrders);
+router.get("/me", authMiddleware.verifyToken, bookingController.getMyOrders);
 
 //Update order
 router.put("/admin/:id", authMiddleware.authorizeRole, bookingController.updateOrder);
