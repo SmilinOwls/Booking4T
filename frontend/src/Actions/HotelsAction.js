@@ -11,7 +11,8 @@ import {
   GET_ROOMS_HOTEL_FAILURE,
   GET_ROOMS_HOTEL_REQUEST,
   FILTER_HOTEL_BY_SORT,
-  GET_ROOMS_HOTEL_SUCCESS
+  GET_ROOMS_HOTEL_SUCCESS,
+  SEARCH_HOTEL
 } from "../Constants/HotelsConstant";
 import hotelApi from "../Services/hotelApi";
 
@@ -84,3 +85,14 @@ export function filterHotelBySort(str){
     }
 }
 
+export function searchHotel(keyword){
+  return async(dispatch) => {
+    try {
+      const {data} = await hotelApi.searchHotel(keyword);
+      dispatch({type: SEARCH_HOTEL, payload: data});
+    } catch (error) {
+        console.log(error);
+    }
+     
+  }
+}

@@ -1,7 +1,8 @@
-import {GET_HOTEL_FAILURE, GET_HOTEL_SUCCESS, GET_HOTEL_REQUEST} from '../Constants/HotelsConstant';
+import {GET_HOTEL_FAILURE, GET_HOTEL_SUCCESS, GET_HOTEL_REQUEST, SEARCH_HOTEL} from '../Constants/HotelsConstant';
 
 const initialState = {
     hotels: [],
+    searchHotels: [],
     isLoading: false,
     error: null
 };
@@ -17,6 +18,8 @@ function hotelsReducer(state=initialState, action){
         case GET_HOTEL_FAILURE:{
             return {...state, isLoading: false, error: action.error}
         }
+        case SEARCH_HOTEL:
+            return {...state, hotels: [], searchHotels: action.payload, isLoading: false, error: null}
         default:
             return state;
     }

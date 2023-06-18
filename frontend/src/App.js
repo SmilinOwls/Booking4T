@@ -17,6 +17,7 @@ import ThankYou from "./Pages/Thankyou";
 import AccountSetting from "./Pages/AccountSetting";
 import AccountBooking from "./Pages/AccountSetting/AccountBooking";
 import AccountMemory from "./Pages/AccountSetting/AccountMemory";
+import SearchResult from "./Pages/SearchResult";
 
 function App() {
   return (
@@ -29,6 +30,11 @@ function App() {
                 <AppLayout>
                   <Home />
                 </AppLayout>
+              </Route>
+              <Route path="/search" exact>
+                  <AppLayout>
+                     <SearchResult />
+                  </AppLayout>
               </Route>
               <Route path="/hotels" exact>
                 <AppLayout>
@@ -85,6 +91,7 @@ function App() {
                     <AccountSetting />
                   </AppLayout>
               </Route>
+             
               <Route path="/sign-up">
                   <AppLayout>
                       <Signup />

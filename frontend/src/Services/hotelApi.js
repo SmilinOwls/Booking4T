@@ -20,6 +20,13 @@ const hotelApi = {
     },
     getRoomsByHotel: (hotelId) => {
         return axiosClient.get('/api/room/allrooms/' + hotelId);
+    },
+    searchHotel: (keyword) => {
+        let url;
+        if(keyword){
+            url = "/api/place/name/search?keyword=" + keyword
+        }
+        return axiosClient.get(url);
     }
 }
 

@@ -62,8 +62,9 @@ const CheckoutPayment = () => {
             <option value="COD">Pay At The Hotel</option>
           </select>
           <div className="mt-3">
-            <PaypalCheckoutButton handleCreateOrder={handleCreateOrder} />
+            <PaypalCheckoutButton className={`${paymentMethod === "COD" ? "cursor-not-allowed" : ""}`}  handleCreateOrder={handleCreateOrder} />
             <button
+              disabled={paymentMethod==="PayPal"}
               onClick={handleCreateOrder}
               className="bg-[#F2BE22] text-black rounded-xl border px-3 py-2 w-full"
             >

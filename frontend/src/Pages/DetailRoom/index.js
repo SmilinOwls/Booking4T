@@ -132,7 +132,7 @@ const DetailRoom = () => {
               onChange={ev => setNumberOfGuests(ev.target.value)}
               className="border border-gray-200 rounded-lg px-3 py-2" 
           />
-          {numberOfGuests > detailRoom.maxGuests ? (<p className="text-red-400">The number of guests cannot exceed the allowed number</p>) : (<></>)}
+          {numberOfGuests > detailRoom.maxGuests || numberOfGuests < 0 ? (<p className="text-red-400">The number of guests cannot exceed the allowed number</p>) : (<></>)}
           <p className="mt-4 font-semibold text-[20px]">Select number of this room: </p>
           <div className="mt-3">
             <button disabled={qnt === 1} onClick={handleDecreaseQnt} className="border text-[18px] mr-3 px-2 py-1 border-gray-500 bg-white text-black rounded-lg hover:text-[#F79327]">
@@ -221,6 +221,7 @@ const DetailRoom = () => {
             <div>
               <p className="font-semibold text-[22px] text-red-700">Price: ${fixedPrice || 0}</p>
               <button
+                disabled={error !== ""}
                 onClick={() => handleAddToCart(detailRoom._id, qnt, nightOfDays)} 
                 className="w-full border bg-[#faa935] border-[#faa935] rounded-lg px-3 py-2 text-[#000]  font-semibold hover:text-red-700 transition-all"
                 
