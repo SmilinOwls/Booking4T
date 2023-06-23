@@ -2,11 +2,18 @@ import React from "react";
 import {Link} from 'react-router-dom'
 import "./HotelCard.css";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import {useDispatch} from 'react-redux'
 import "react-lazy-load-image-component/src/effects/blur.css";
 import {AiFillStar} from "react-icons/ai";
-import {BsCartPlus} from "react-icons/bs";
+import {MdOutlineFavoriteBorder} from 'react-icons/md';
+import {addToWishList} from '../../Actions/WishlistAction';
+
 const HotelCard = (props) => {
   const { placePic, ratings, address, name, extraInfo, _id } = props;
+  const dispatch = useDispatch();
+  const handleAddToWishlist = (id, qnt) => {
+    dispatch(addToWishList(id, qnt))
+}
   return (
     <div className="shop-product">
       <div className="shop-product__img-wrapper">
@@ -37,8 +44,8 @@ const HotelCard = (props) => {
         </button>
       </div>
       <div className="shop-product__btns">
-        <div className="shop-product__btn">
-          <BsCartPlus />
+        <div className="shop-product__btn" onClick={() => handleAddToWishlist(_id, 1)}>
+          <MdOutlineFavoriteBorder />
         </div>
       </div>
     </div>

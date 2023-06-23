@@ -20,7 +20,7 @@ const DetailHotel = () => {
         dispatch(getDetailHotel(hotelId));
         dispatch(getRoomByHotel(hotelId));
     }, [hotelId]);
-   const newArr = detailHotel?.extraInfo?.split('.');
+   const newArr = detailHotel?.extraInfo?.split(',');
    newArr?.pop();
   return (
     <div className='Hotels'>

@@ -11,6 +11,8 @@ import {loginReducer, registerReducer, logoutReducer} from './AuthReducer'
 import reviewReducer from './ReviewReducer';
 import cartReducer from './CartReducer';
 import { myOrderList, orderReducer } from './BookingReducer';
+import wishlistReducer from './WishlistReducer';
+import addSidebarReducer from './SidebarReducer';
 
 const rootReducer = combineReducers({
     hotels: hotelsReducer,
@@ -28,6 +30,8 @@ const rootReducer = combineReducers({
    logout: logoutReducer,
    review: reviewReducer,
    cart: cartReducer,
+   wishlist: wishlistReducer,
+   sidebar: addSidebarReducer,
    order: orderReducer,
    myOrder: myOrderList
 });
