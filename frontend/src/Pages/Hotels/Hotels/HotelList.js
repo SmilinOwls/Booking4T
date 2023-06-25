@@ -52,7 +52,7 @@ const HotelList = () => {
       {hotelsFilter.length <= 0 && <HotelsEmpty />}
       <div className='hotel-products'>
          {hotelsFilter && currentHotels.map((item) => (
-                <HotelCard key={item._id} {...item}/>
+                <HotelCard d key={item._id} {...item}/>
           ))}
       </div>
       <Paginate 
