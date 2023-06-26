@@ -9,7 +9,7 @@ import { Form, Input, Upload, Rate, Button, Row, Col, Image, Select, notificatio
 function AddPlace() {
     const [form] = Form.useForm();
     const dispatch = useDispatch();
-    const sites = useSelector(state => state.sites);
+    const sites = useSelector(state => state.Sites);
     const [api, contextHolder] = notification.useNotification();
     const [options, setOptions] = useState([]);
 

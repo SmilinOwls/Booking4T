@@ -364,7 +364,7 @@ function Blog({ blogs, actions }) {
 
 const mapStateToProps = state => {
     return {
-        blogs: state.blogs
+        blogs: state.Blogs
     };
 };
 

@@ -10,9 +10,9 @@ import SiteReducer from './SiteReducer';
 
 export default ({
     orders: OrderReducer,
-    blogs: BlogReducer,
+    Blogs: BlogReducer,
     rooms: RoomReducer,
     places: PlaceReducer,
     users: UserReducer,
-    sites: SiteReducer
+    Sites: SiteReducer
 });

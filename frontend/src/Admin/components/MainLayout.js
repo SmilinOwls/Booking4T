@@ -12,6 +12,7 @@ import { LuClipboardList } from 'react-icons/lu';
 import { BiCategory } from 'react-icons/bi';
 import { IoIosNotifications } from 'react-icons/io';
 import './index.css';
+import { user } from '../utils/config';
 
 import { Button, Layout, Menu, theme } from 'antd';
 const { Header, Sider, Content } = Layout;
@@ -113,8 +114,8 @@ function MainLayout({children}) {
                 <UserOutlined className="fs-2" />
               </div>
               <div className="col col-md-auto">
-                <h6 className='mt-2'>Admin</h6>
-                <h6>admin01@gmail.com</h6>
+                <h6 className='mt-2'>{user.username}</h6>
+                <h6>{user.email}</h6>
               </div>
               <div className='col col-md-auto dropdown'>
                 <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -124,7 +125,7 @@ function MainLayout({children}) {
                     <Link
                       className="dropdown-item py-1 mb-1 z-2"
                       style={{ height: "auto", lineHeight: "20px" }}
-                      to="/api/user/me/profile"
+                      to="/api/me/profile"
                     >
                       View Profile
                     </Link>
