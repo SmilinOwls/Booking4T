@@ -116,7 +116,6 @@ function App() {
                   <LogOut />
                 </AppLayout>
               </Route>
-
               <Route path="/api" exact>
                 <MainLayout>
                   <Dashboard/>

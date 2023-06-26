@@ -62,11 +62,8 @@ const BookingControllers = {
         try {
             const orders = await Booking.find();
             let totalAmount = 0;
-            orders.forEach((order) => {
-                totalAmount += order.totalPrice;
-            });
 
-            res.status(200).json({orders, totalAmount});
+            res.status(200).json(orders);
         } catch (error) {
             res.status(500).json(error);
         }
@@ -110,14 +107,15 @@ const BookingControllers = {
                 taxPrice,
                 checkOut
             } = req.body;
+            
             const order = await Booking.findById(req.params.id);
             if(!order){
                 return res.status(404).json("Order not found !!!");
             }
-            order.paymentMethod = paymentMethod || order.paymentMethod,
-            order.orderStatus = orderStatus || order.orderStatus,
-            order.taxPrice= taxPrice || order.taxPrice,
-            order.checkOut = checkOut || order.checkOut
+            order.paymentMethod = paymentMethod || order.paymentMethod;
+            order.orderStatus = orderStatus || order.orderStatus;
+            order.taxPrice= taxPrice || order.taxPrice;
+            order.checkOut = checkOut || order.checkOut;
             const updatedOrder = await order.save();
             res.status(200).json(updatedOrder);
         } catch (error) {

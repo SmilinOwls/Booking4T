@@ -139,14 +139,14 @@ function Room({ rooms, actions }) {
         //  axios handler goes here (PUT)
         try {
             const row = await form.validateFields();
-            console.log(row);
+            
             actions.updateRoom(
                 {
                     ...row,
                     _id: _id,
                     checkIn: typeof row["checkIn"] === 'string' ? row["checkIn"] : row["checkIn"].format(dateFormat),
                     checkOut: typeof row["checkOut"] === 'string' ? row["checkOut"] : row["checkOut"].format(dateFormat),
-                    photos: row.photos.map(photo => photo.originFileObj ? URL.createObjectURL(photo.originFileObj) : photo)
+                    photos: row.photos.map(photo => photo.originFileObj ? URL.createObjectURL(photo.originFileObj) : photo.url)
                 });
             setEditingKey('');
         } catch (errInfo) {
@@ -210,7 +210,7 @@ function Room({ rooms, actions }) {
                         valuePropName={dataIndex === "photos" ? "fileList" : "value"}
                         getValueProps={(value) => {
                             if (["checkIn", "checkOut"].includes(dataIndex)) {
-                                return { value: dayjs(value) }
+                                return { value: dayjs(value, dateFormat) }
                             } else{
                                 if (["photos"].includes(dataIndex)) {
                                     return { fileList: value }
@@ -220,9 +220,10 @@ function Room({ rooms, actions }) {
                         }}
                         rules={[
                             {
-                                required: true,
+                                required: ["place", "title","desription", "maxGuests", "price"].includes(dataIndex) ? true : false,
                                 message: `Please Input ${title}!`,
                             },
+                            
                             ({ getFieldValue }) => ({
                                 validator(_, value) {
                                     if ((

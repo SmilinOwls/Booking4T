@@ -58,7 +58,7 @@ function User({ users, actions }) {
                 actions.updateUser(
                     {
                         ...user,
-                        profilePic: card.profilePic[0].originFileObj ? URL.createObjectURL(card.profilePic[0].originFileObj) : card.profilePic
+                        profilePic: typeof card.profilePic === "string" ? card.profilePic : (card.profilePic[0].originFileObj ? URL.createObjectURL(card.profilePic[0].originFileObj) : card.profilePic)
                     });
                 setConfirmLoading(false);
                 messageApi.open({
@@ -255,7 +255,7 @@ function User({ users, actions }) {
                         ]}
                         hasFeedback
                     >
-                        <Input.Password />
+                        <Input.Password readOnly/>
                     </Form.Item>
                     <Form.Item
                         name="phone"

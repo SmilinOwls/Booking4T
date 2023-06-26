@@ -20,6 +20,7 @@ function Order({ orders, actions }) {
     }, []);
 
     useEffect(() => {
+        console.log(orders);
         setData(status === "All" ? [...orders] : orders.filter((item) => item.orderStatus === status));
     }, [status, orders]);
 
@@ -36,7 +37,7 @@ function Order({ orders, actions }) {
                     <Select defaultValue="All" onChange={(value) => setStatus(value)} style={{ width: '100%' }}>
                         <Select.Option value="All">All</Select.Option>
                         <Select.Option value="Processing"><FcProcess {...style} />Processing</Select.Option>
-                        <Select.Option value="Approval"><FcApproval  {...style} />Approval</Select.Option>
+                        <Select.Option value="Approved"><FcApproval  {...style} />Approved</Select.Option>
                     </Select>
                 </Col>
 
@@ -90,12 +91,14 @@ function Order({ orders, actions }) {
                             >
                                 <Form.Item
                                     name="_id"
+                                    className='ant-form-input'
                                     label={<span><FaReceipt {...style} /><b>Order ID</b></span>}
                                 >
                                     <span>{item._id}</span>
                                 </Form.Item>
                                 <Form.Item
                                     name="user"
+                                    className='ant-form-input'
                                     label={<span><FaUser {...style} /><b>User ID</b></span>}
                                 >
                                     <span>{item.user}</span>

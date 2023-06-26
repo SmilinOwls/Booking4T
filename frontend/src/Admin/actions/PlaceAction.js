@@ -1,95 +1,55 @@
 import { GET_PLACE, ADD_PLACE, UPDATE_PLACE, DELETE_PLACE } from './types';
-
-const dataSource = [{
-    _id: '1',
-    name: 'Name I',
-    address: 'Address I',
-    sites: 'Site ID',
-    country: 'Country I',
-    placePic: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-    description: 'description',
-    extraInfo: 'extraInfo',
-    ratings: 0,
-    numReviews: 0,
-    reviews: [
-        {
-            user: 'User ID',
-            name: 'Name I',
-            rating: 1,
-            comment: "comment"
-        }
-    ]
-},
-{
-    _id: '2',
-    name: 'Name II',
-    address: 'Address II',
-    sites: 'Site ID',
-    country: 'Country II',
-    placePic: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-    description: 'description',
-    extraInfo: 'extraInfo',
-    ratings: 0,
-    numReviews: 0,
-    reviews: [
-        {
-            user: 'User ID',
-            name: 'Name II',
-            rating: 1,
-            comment: "comment"
-        }
-    ]
-},
-{
-    _id: '3',
-    name: 'Name III',
-    address: 'Address III',
-    sites: 'Site ID',
-    country: 'Country II',
-    placePic: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-    description: 'description',
-    extraInfo: 'extraInfo',
-    ratings: 0,
-    numReviews: 0,
-    reviews: [
-        {
-            user: 'User ID',
-            name: 'Name III',
-            rating: 1,
-            comment: "comment"
-        }
-    ]
-},
-];
+import DataAPI from '../utils/DataAPI';
 
 export const getPlace = () => {
-    const places = dataSource;
-    return ({
-        type: GET_PLACE,
-        places: places
-    });
+    return (dispatch) => {
+        DataAPI.getAllPlaces().then((places) => {
+            dispatch({
+                type: GET_PLACE,
+                places: places
+            });
+        }).catch((error) => {
+            throw error;
+        })
+    }
 };
 
 export const addPlace = (place) => {
-
-    return ({
-        type: ADD_PLACE,
-        place: place
-    });
+    return (dispatch) => {
+        DataAPI.addPlace(place).then((place) => {
+            dispatch({
+                type: ADD_PLACE,
+                place: place
+            });
+        }).catch((error) => {
+            throw error;
+        })
+    }
 };
 
 export const updatePlace = (place) => {
+    return (dispatch) => {
+        DataAPI.updatePlace(place).then((place) => {
+            dispatch({
+                type: UPDATE_PLACE,
+                place: place
+            });
+        }).catch((error) => {
+            throw error;
+        })
+    }
 
-    return ({
-        type: UPDATE_PLACE,
-        place: place
-    });
 };
 
 export const deletePlace = _id => {
-
-    return ({
-        type: DELETE_PLACE,
-        _id
-    });
+    return (dispatch) => {
+        DataAPI.deletePlace(_id).then(({success, message}) => {
+            dispatch({
+                type: DELETE_PLACE,
+                _id
+            });
+        }).catch((error) => {
+            console.log(error);
+        })
+    }
 };

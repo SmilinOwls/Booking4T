@@ -1,88 +1,58 @@
 import { GET_ROOM, ADD_ROOM, UPDATE_ROOM, DELETE_ROOM } from './types';
-
-const dataSource = [{
-    _id: 1,
-    owner: 'User ID',
-    place: 'Place ID',
-    title: 'Title I',
-    description: 'Description I',
-    photos: ['https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-        'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png'
-    ],
-    perks: ['perk I', 'perk II'],
-    typeRoom: 'Type I',
-    coupon: 1,
-    numOfBed: 2,
-    checkIn: '06/12/2023 12:00',
-    checkOut: '07/12/2023 8:00',
-    price: 1,
-    ratings: 1,
-    maxGuests: 1,
-    countInStock: 1,
-}, {
-    _id: 2,
-    owner: 'User ID',
-    place: 'Place ID',
-    title: 'Title II',
-    description: 'Description II',
-    photos: ['https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png'],
-    perks: ['perk I', 'perk II'],
-    typeRoom: 'Type I',
-    coupon: 1,
-    numOfBed: 2,
-    checkIn: '06/12/2023 12:00',
-    checkOut: '07/12/2023 8:00',
-    price: 1,
-    ratings: 1,
-    maxGuests: 1,
-    countInStock: 1,
-}, {
-    _id: 3,
-    owner: 'User ID',
-    place: 'Place ID',
-    title: 'Title III',
-    description: 'Description III',
-    photos: ['https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png'],
-    perks: ['perk I', 'perk II'],
-    typeRoom: 'Type III',
-    coupon: 1,
-    numOfBed: 2,
-    checkIn: '06/12/2023 12:00',
-    checkOut: '07/12/2023 8:00',
-    price: 1,
-    ratings: 1,
-    maxGuests: 1,
-    countInStock: 1,
-},];
+import DataAPI from '../utils/DataAPI';
 
 export const getRoom = () => {
-    const rooms = dataSource;
-    return ({
-        type: GET_ROOM,
-        rooms: rooms
-    });
+
+    return (dispatch) => {
+        DataAPI.getAllRooms().then((rooms) => {
+            dispatch({
+                type: GET_ROOM,
+                rooms: rooms
+            });
+        }).catch((error) => {
+            throw error;
+        })
+    }
 };
 
 export const addRoom = (room) => {
-
-    return ({
-        type: ADD_ROOM,
-        room: room
-    });
+    console.log(room);
+    return (dispatch) => {
+        DataAPI.addRoom(room).then((room) => {
+            dispatch({
+                type: ADD_ROOM,
+                room: room
+            });
+        }).catch((error) => {
+            throw error;
+        })
+    }
 };
 
 export const updateRoom = (room) => {
 
-    return ({
-        type: UPDATE_ROOM,
-        room: room
-    });
+    return (dispatch) => {
+        DataAPI.updateRoom(room).then((room) => {
+            dispatch({
+                type: UPDATE_ROOM,
+                room: room
+            });
+        }).catch((error) => {
+            throw error;
+        })
+    }
 };
 
 export const deleteRoom = _id => {
 
-    return ({
-        type: DELETE_ROOM,
-        _id
-    });
+    return (dispatch) => {
+        DataAPI.deleteRoom(_id).then(({success, message}) => {
+            dispatch({
+                type: DELETE_ROOM,
+                _id
+            });
+        }).catch((error) => {
+            console.log(error);
+        })
+    }
 };

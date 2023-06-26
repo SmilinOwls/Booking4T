@@ -95,6 +95,7 @@ const roomControllers = {
             description,
             typeRoom,
             coupon,
+            photos,
             perks,
             numOfBed,
             maxGuests,
@@ -109,6 +110,7 @@ const roomControllers = {
             room.description = description || room.description;
             room.typeRoom = typeRoom || room.typeRoom;
             room.coupon = coupon || room.coupon;
+            room.photos = photos || room.photos;
             room.perks = perks || room.perks;
             room.numOfBed = numOfBed || room.numOfBed;
             room.maxGuests = maxGuests || room.maxGuests;

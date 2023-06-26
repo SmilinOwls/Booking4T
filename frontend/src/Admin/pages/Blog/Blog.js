@@ -137,7 +137,7 @@ function Blog({ blogs, actions }) {
             actions.updateBlog({
                 ...row,
                 _id: _id,
-                image: row.image[0].originFileObj ? URL.createObjectURL(row.image[0].originFileObj) : row.image
+                image: row.image[0].originFileObj ? URL.createObjectURL(row.image[0].originFileObj) : row.image[0].url
             });
 
             setEditingKey('');

@@ -1,4 +1,6 @@
-export const dateFormat = "MM/DD/YYYY HH:mm";
+export const user = JSON.parse(localStorage.getItem("user"));
+export const configAxios = { headers: {token: user.accessToken}};
+export const dateFormat = "DD/MM/YYYY HH:mm";
 export const formItemLayout = {
     labelCol: {
         xs: {

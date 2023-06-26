@@ -1,11 +1,41 @@
 import axios from 'axios'
-import { base_url } from './baseUrl';
+import { base_url} from './baseUrl';
+import {configAxios} from './config';
+
 
 class DataAPI {
+    // User
+    static async getAllUsers() {
+        try {
+            const response = await axios.get(`${base_url}/user/admin`, configAxios);
+            return response.data;
+        } catch (error) {
+            throw error;
+        }
+    }
+    
+    static async updateUser(user){
+        try {
+            const response = await axios.put(`${base_url}/user/admin/${user._id}`,user, configAxios);
+            return response.data;
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    static async deleteUser(id){
+        try {
+            const response = await axios.delete(`${base_url}/user/admin/${id}`, configAxios);
+            return response.data;
+        } catch (error) {
+            throw error;
+        }
+    }
+
     // Place
     static async getAllPlaces() {
         try {
-            const response = await axios.get(`${base_url}/place/admin`);
+            const response = await axios.get(`${base_url}/place`);
             return response.data;
         } catch (error) {
             throw error;
@@ -14,16 +44,16 @@ class DataAPI {
 
     static async addPlace(place) {
         try {
-            const response = await axios.post(`${base_url}/place/admin`,place);
+            const response = await axios.post(`${base_url}/place/admin`,place, configAxios);
             return response.data;
         } catch (error) {
             throw error;
         }
     }
     
-    static async updatePlace(id){
+    static async updatePlace(place){
         try {
-            const response = await axios.put(`${base_url}/place/admin/${id}`);
+            const response = await axios.put(`${base_url}/place/admin/${place._id}`, place, configAxios);
             return response.data;
         } catch (error) {
             throw error;
@@ -32,7 +62,7 @@ class DataAPI {
 
     static async deletePlace(id){
         try {
-            const response = await axios.delete(`${base_url}/place/admin/${id}`);
+            const response = await axios.delete(`${base_url}/place/admin/${id}`, configAxios);
             return response.data;
         } catch (error) {
             throw error;
@@ -42,7 +72,7 @@ class DataAPI {
     // Room
     static async getAllRooms() {
         try {
-            const response = await axios.get(`${base_url}/room/admin`);
+            const response = await axios.get(`${base_url}/room`, configAxios);
             return response.data;
         } catch (error) {
             throw error;
@@ -51,16 +81,16 @@ class DataAPI {
 
     static async addRoom(room) {
         try {
-            const response = await axios.post(`${base_url}/room/admin`,room);
+            const response = await axios.post(`${base_url}/room/admin`,room, configAxios);
             return response.data;
         } catch (error) {
             throw error;
         }
     }
     
-    static async updateRoom(id){
+    static async updateRoom(room){
         try {
-            const response = await axios.put(`${base_url}/room/admin/${id}`);
+            const response = await axios.put(`${base_url}/room/admin/${room._id}`,room, configAxios);
             return response.data;
         } catch (error) {
             throw error;
@@ -69,7 +99,7 @@ class DataAPI {
 
     static async deleteRoom(id){
         try {
-            const response = await axios.delete(`${base_url}/room/admin/${id}`);
+            const response = await axios.delete(`${base_url}/room/admin/${id}`, configAxios);
             return response.data;
         } catch (error) {
             throw error;
@@ -79,7 +109,7 @@ class DataAPI {
     // Blog
     static async getAllBlogs() {
         try {
-            const response = await axios.get(`${base_url}/blog/admin`);
+            const response = await axios.get(`${base_url}/blog`, configAxios);
             return response.data;
         } catch (error) {
             throw error;
@@ -88,16 +118,16 @@ class DataAPI {
 
     static async addBlog(blog) {
         try {
-            const response = await axios.post(`${base_url}/blog/admin`,blog);
+            const response = await axios.post(`${base_url}/blog/admin`,blog, configAxios);
             return response.data;
         } catch (error) {
             throw error;
         }
     }
     
-    static async updateBlog(id){
+    static async updateBlog(blog){
         try {
-            const response = await axios.put(`${base_url}/blog/admin/${id}`);
+            const response = await axios.put(`${base_url}/blog/admin/${blog._id}`,blog, configAxios);
             return response.data;
         } catch (error) {
             throw error;
@@ -106,7 +136,7 @@ class DataAPI {
 
     static async deleteBlog(id){
         try {
-            const response = await axios.delete(`${base_url}/blog/admin/${id}`);
+            const response = await axios.delete(`${base_url}/blog/admin/${id}`, configAxios);
             return response.data;
         } catch (error) {
             throw error;
@@ -116,16 +146,16 @@ class DataAPI {
     // Order
     static async getAllOrders() {
         try {
-            const response = await axios.get(`${base_url}/book`);
+            const response = await axios.get(`${base_url}/book`, configAxios);
             return response.data;
         } catch (error) {
             throw error;
         }
     }
     
-    static async updateOrder(id){
+    static async updateOrder(order){
         try {
-            const response = await axios.put(`${base_url}/book/admin/${id}`);
+            const response = await axios.put(`${base_url}/book/admin/${order._id}`, order, configAxios);
             return response.data;
         } catch (error) {
             throw error;
@@ -134,7 +164,7 @@ class DataAPI {
 
     static async deleteOrder(id){
         try {
-            const response = await axios.delete(`${base_url}/book/admin/${id}`);
+            const response = await axios.delete(`${base_url}/book/admin/${id}`, configAxios);
             return response.data;
         } catch (error) {
             throw error;
@@ -144,7 +174,7 @@ class DataAPI {
     // Site
     static async getAllSites() {
         try {
-            const response = await axios.get(`${base_url}/sites/admin`);
+            const response = await axios.get(`${base_url}/site`, configAxios);
             return response.data;
         } catch (error) {
             throw error;

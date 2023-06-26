@@ -134,11 +134,12 @@ function Place({ places, actions }) {
         //  axios handler goes here (PUT)
         try {
             const row = await form.validateFields();
+            console.log("Row", row);
             actions.updatePlace(
                 {
                     ...row, 
                     _id: _id,
-                    placePic: row.placePic[0].originFileObj ? URL.createObjectURL(row.placePic[0].originFileObj) : row.placePic
+                    placePic: row.placePic[0].originFileObj ? URL.createObjectURL(row.placePic[0].originFileObj) : row.placePic[0].url
                 });
             setEditingKey('');
             

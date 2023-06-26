@@ -66,10 +66,12 @@ const placeControllers = {
         const {
             name,
             address,
+            country,
             description,
             extraInfo,
             placePic,
         } = req.body;
+
         const place = await Place.findById(req.params.id);
         if(!place){
             return res.status(404).json({
@@ -80,6 +82,7 @@ const placeControllers = {
         try {
             place.name = name || place.name;
             place.address = address || place.address;
+            place.country = country || place.country;
             place.description = description || place.description;
             place.placePic = placePic || place.placePic;
             place.extraInfo = extraInfo || place.extraInfo;
@@ -98,26 +101,28 @@ const placeControllers = {
             })
         }
         const room = await Room.find({place: req.params.id});
-        if(room.length === 0){
+        
+        if(room.length !== 0){
             return res.status(404).json({
                 success: false,
-                message: "Room not found !!!"
+                message: "Room Reference Found !!!"
             })
         }
         
-        try {
-                await Room.deleteMany({place: req.params.id}, (err) => {
-                    if (err) {
-                      console.log(err);
-                    } else {
-                      console.log('Rooms of Restaurant deleted successfully');
-                    }})
+        
+        // try {
+        //         await Room.deleteMany({place: req.params.id}, (err) => {
+        //             if (err) {
+        //               console.log(err);
+        //             } else {
+        //               console.log('Rooms of Restaurant deleted successfully');
+        //             }})
 
            
            
-        } catch (error) {
-            res.status(500).json(error);
-        }
+        // } catch (error) {
+        //     res.status(500).json(error);
+        // }
 
         try {
             await place.remove();

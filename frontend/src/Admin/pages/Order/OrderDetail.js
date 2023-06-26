@@ -14,7 +14,6 @@ function OrderDetail({ actions }) {
   const history = useHistory();
   const { state } = useLocation();
   const { order } = state || {};
-  console.log(order);
   const [form] = Form.useForm();
   const [isModal, setModal] = useState(false);
   const [book, setBook] = useState({ ...order });
@@ -34,7 +33,7 @@ function OrderDetail({ actions }) {
     form.setFieldsValue(
       {
         ...book,
-        ["range-time-picker"]: [dayjs(order.checkIn, dateFormat), dayjs(order.checkOut, dateFormat)]
+        ["range-time-picker"]: [dayjs(order.checkIn), dayjs(order.checkOut)]
       }
     );
   }, []);
@@ -127,39 +126,26 @@ function OrderDetail({ actions }) {
               <Form.Item
                 label="Full Name"
                 name={['userInfo', 'fullName']}
-                rules={[
-                  {
-                    required: true,
-                    message: 'Please input Full Name',
-                  },
-                ]}
               >
-                <Input />
+                <Input readOnly/>
               </Form.Item>
               <Form.Item
                 label="Phone"
                 name={['userInfo', 'phone']}
                 rules={[
                   {
-                    required: true,
-                    message: 'Please input Phone',
                     pattern: new RegExp(/^[0-9]+$/)
                   },
                 ]}
               >
-                <Input maxLength={10}/>
+                <Input maxLength={10} readOnly/>
               </Form.Item>
               <Form.Item
                 label="Identify Card"
                 name={['userInfo', 'IdentifyCard']}
-                rules={[
-                  {
-                    required: true,
-                    message: 'Please input Identify Card',
-                  },
-                ]}
+
               >
-                <Input />
+                <Input readOnly/>
               </Form.Item>
 
             </div>
@@ -175,17 +161,6 @@ function OrderDetail({ actions }) {
                 ]}
               >
                 <span>{book._id}</span>
-              </Form.Item>
-              <Form.Item
-                name="place"
-                label="Place ID"
-                rules={[
-                  {
-                    required: true,
-                  },
-                ]}
-              >
-                <span>{book.place}</span>
               </Form.Item>
               <Form.Item
                 name="range-time-picker"
@@ -211,19 +186,6 @@ function OrderDetail({ actions }) {
                 <Input />
               </Form.Item>
               <Form.Item
-                name="numOfGuest"
-                label="Guest Number"
-                rules={[
-                  {
-                    required: true,
-                    type: 'number',
-                    message: 'Please input number of Guests',
-                  },
-                ]}
-              >
-                <InputNumber min={0} />
-              </Form.Item>
-              <Form.Item
                 name="orderStatus"
                 label="Order Status"
                 rules={[
@@ -235,7 +197,7 @@ function OrderDetail({ actions }) {
               >
                 <Select style={{ width: '100%' }}>
                   <Select.Option value="Processing">Processing</Select.Option>
-                  <Select.Option value="Approval">Approval</Select.Option>
+                  <Select.Option value="Approved">Approved</Select.Option>
                 </Select>
               </Form.Item>
               <Form.Item
@@ -259,7 +221,7 @@ function OrderDetail({ actions }) {
                   },
                 ]}
               >
-                <InputNumber min={0} />
+                <InputNumber min={0} readOnly/>
               </Form.Item>
               <Form.Item
                 name="paidAt"
@@ -272,7 +234,7 @@ function OrderDetail({ actions }) {
                 ]}
                 getValueProps={(value) => ({ value: dayjs(value) })}
               >
-                <DatePicker showTime format={dateFormat} />
+                <DatePicker showTime format={dateFormat}/>
               </Form.Item>
             </div>
             <div
@@ -294,7 +256,7 @@ function OrderDetail({ actions }) {
                     <Space key={key} direction="vertical" style={{ display: 'flex', marginBottom: 8 }} align="baseline">
                       <Row gutter={3}>
                         <Col span={8}>
-                          <Image className='col-5' style={{ mixBlendMode: "multiply" }} src={order.cart.image || 'https://img.freepik.com/free-vector/hotel-room-with-bed-interior-design-background-window-with-curtains-bed-with-pillows-towels-lamp-happy-holiday-vacation-staying-modern-hotel-with-view-city_575670-2063.jpg'} />
+                          <Image className='col-5' style={{ mixBlendMode: "multiply" }} src={order.cart[key].image } />
                         </Col>
                         <Col span={16}>
                           <Form.Item
@@ -307,12 +269,13 @@ function OrderDetail({ actions }) {
                               },
                             ]}
                           >
-                            <Input placeholder="Room ID" readOnly />
+                            <span>{order.cart[key].room}</span>
                           </Form.Item>
                           <Form.Item
                             {...restField}
                             label="Title"
                             name={[name, 'title']}
+                            
                             rules={[
                               {
                                 required: true,
@@ -320,7 +283,7 @@ function OrderDetail({ actions }) {
                               },
                             ]}
                           >
-                            <Input placeholder="Title" />
+                            <Input placeholder="Title" readOnly/>
                           </Form.Item>
                           <Form.Item
                             {...restField}
@@ -330,11 +293,12 @@ function OrderDetail({ actions }) {
                               {
                                 required: true,
                                 type: 'number',
+                                min: 0,
                                 message: 'Please input Price',
                               },
                             ]}
                           >
-                            <InputNumber placeholder="Price" />
+                            <InputNumber readOnly />
                           </Form.Item>
                           <Form.Item
                             {...restField}
@@ -343,10 +307,11 @@ function OrderDetail({ actions }) {
                             rules={[
                               {
                                 type: 'number',
+                                min: 0,
                               },
                             ]}
                           >
-                            <InputNumber placeholder="Days" />
+                            <InputNumber readOnly />
                           </Form.Item>
                           <Form.Item
                             {...restField}
@@ -356,11 +321,12 @@ function OrderDetail({ actions }) {
                               {
                                 required: true,
                                 type: 'number',
+                                min: 0,
                                 message: 'Please input Quantity',
                               },
                             ]}
                           >
-                            <InputNumber placeholder="Quantity" />
+                            <InputNumber readOnly />
                           </Form.Item>
                           <Form.Item
                             {...restField}
@@ -369,10 +335,11 @@ function OrderDetail({ actions }) {
                             rules={[
                               {
                                 type: 'number',
+                                min: 0,
                               },
                             ]}
                           >
-                            <InputNumber placeholder="Max Guests" />
+                            <InputNumber readOnly/>
                           </Form.Item>
                           <Form.Item wrapperCol={{ offset: 6, span: 5 }}>
                             <Button icon={<DeleteOutlined />} onClick={() => deleteCartItem(order.cart[key]._id)} />
