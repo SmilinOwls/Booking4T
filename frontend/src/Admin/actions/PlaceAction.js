@@ -41,15 +41,18 @@ export const updatePlace = (place) => {
 
 };
 
-export const deletePlace = _id => {
+export const deletePlace = (_id, messageApi) => {
     return (dispatch) => {
-        DataAPI.deletePlace(_id).then(({success, message}) => {
+        DataAPI.deletePlace(_id).then(() => {
             dispatch({
                 type: DELETE_PLACE,
                 _id
             });
         }).catch((error) => {
-            console.log(error);
+            messageApi.open({
+                type: 'error',
+                content: error.response.data.message,
+              });
         })
     }
 };

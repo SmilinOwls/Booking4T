@@ -139,3 +139,7 @@ svg {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.ant-table-body{
+  max-height: 10% !important;
+}

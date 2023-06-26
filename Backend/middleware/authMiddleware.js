@@ -6,7 +6,7 @@ const authMiddleware = {
         const token = req.headers.token;
         if(token){
             try {
-                const accessToken = token;
+                const accessToken = req.headers.api ? token : token.split(' ')[1];
                 const decoded = jwt.verify(accessToken, process.env.MY_SECRETKEY)
 
                 req.user = await User.findById(decoded.id)

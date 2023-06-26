@@ -1,5 +1,5 @@
-export const user = JSON.parse(localStorage.getItem("user"));
-export const configAxios = { headers: {token: user.accessToken}};
+export const user = JSON.parse(localStorage.getItem("user")) || {accessToken: ''};
+export const configAxios = { headers: {token: user.accessToken, api: true}};
 export const dateFormat = "DD/MM/YYYY HH:mm";
 export const formItemLayout = {
     labelCol: {

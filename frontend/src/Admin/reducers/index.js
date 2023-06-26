@@ -6,11 +6,13 @@ import BlogReducer from './BlogReducer';
 import RoomReducer from './RoomReducer';
 import PlaceReducer from './PlaceReducer';
 import UserReducer from './UserReducer';
+import SiteReducer from './SiteReducer';
 
 export default ({
     orders: OrderReducer,
     blogs: BlogReducer,
     rooms: RoomReducer,
     places: PlaceReducer,
-    users: UserReducer
+    users: UserReducer,
+    sites: SiteReducer
 });

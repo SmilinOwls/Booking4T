@@ -144,8 +144,8 @@ function Room({ rooms, actions }) {
                 {
                     ...row,
                     _id: _id,
-                    checkIn: typeof row["checkIn"] === 'string' ? row["checkIn"] : row["checkIn"].format(dateFormat),
-                    checkOut: typeof row["checkOut"] === 'string' ? row["checkOut"] : row["checkOut"].format(dateFormat),
+                    checkIn: typeof row["checkIn"] === 'string' ? row["checkIn"] : ((row["checkIn"] && row["checkIn"].format(dateFormat)) || ''),
+                    checkOut: typeof row["checkOut"] === 'string' ? row["checkOut"] : ((row["checkOut"] && (row["checkOut"].format(dateFormat))) || ''),
                     photos: row.photos.map(photo => photo.originFileObj ? URL.createObjectURL(photo.originFileObj) : photo.url)
                 });
             setEditingKey('');

@@ -11,54 +11,54 @@ import { dateFormat } from '../utils/config';
 import { Column } from '@ant-design/plots';
 
 function Dashboard() {
-  const data = [
+  let data = [
     {
       type: "Jan",
-      sales: 38,
+      sales: 0,
     },
     {
       type: "Feb",
-      sales: 52,
+      sales: 0,
     },
     {
       type: "Mar",
-      sales: 61,
+      sales: 0
     },
     {
       type: "Apr",
-      sales: 145,
+      sales: 0,
     },
     {
       type: "May",
-      sales: 48,
+      sales: 0,
     },
     {
       type: "Jun",
-      sales: 38,
+      sales: 0,
     },
     {
       type: "July",
-      sales: 38,
+      sales: 0,
     },
     {
       type: "Aug",
-      sales: 38,
+      sales: 0,
     },
     {
       type: "Sept",
-      sales: 38,
+      sales: 0,
     },
     {
       type: "Oct",
-      sales: 38,
+      sales: 0,
     },
     {
       type: "Nov",
-      sales: 38,
+      sales: 0,
     },
     {
       type: "Dec",
-      sales: 38,
+      sales: 0,
     },
   ];
 
@@ -138,8 +138,8 @@ function Dashboard() {
 
   const calculate = () => {
     orders.forEach(order => {
-      const year = dayjs(order.paidAt, dateFormat).year();
-      const month = dayjs(order.paidAt, dateFormat).month();
+      const year = dayjs(order.paidAt).year();
+      const month = dayjs(order.paidAt).month();
       if (typeof revenue[year] === "undefined") {
         revenue[year] = {};
         diff[year] = {};
@@ -152,7 +152,10 @@ function Dashboard() {
       }
 
       diff[year][month] = revenue[year][month - 1] === undefined ? 100 : parseFloat(((revenue[year][month] - (revenue[year][month - 1])) / (revenue[year][month - 1])).toFixed(2));
+      data[month].sales += revenue[year][month];
     });
+
+    console.log(data);
   };
 
   const styleIndex = (data) => ({
@@ -206,7 +209,7 @@ function Dashboard() {
                     <p>Total</p> <h4 className='sub-title'>${data}</h4>
                   </div>
                   <div className="d-flex flex-column align-items-end">
-                    <h6 style={styleIndex(diff[year][month])}>{arrowOrientation()} {diff[year][month]}%</h6>
+                    <h6 style={styleIndex(diff[year][month])}>{arrowOrientation(diff[year][month])} {diff[year][month]}%</h6>
                     <p className='desc'>{new Date(year, month).toLocaleString('default', {month: "long", year: "numeric"})}</p>
                   </div>
                 </div>

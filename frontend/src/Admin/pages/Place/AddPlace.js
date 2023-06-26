@@ -1,14 +1,17 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { formItemLayout, tailFormItemLayout } from '../../utils/config'
-import { useDispatch, } from 'react-redux';
+import { useDispatch, useSelector} from 'react-redux';
 import { addPlace } from '../../actions/PlaceAction';
 import { InboxOutlined } from '@ant-design/icons';
+import { getSite } from '../../actions/SiteAction';
 import { Form, Input, Upload, Rate, Button, Row, Col, Image, Select, notification } from 'antd';
 
 function AddPlace() {
     const [form] = Form.useForm();
     const dispatch = useDispatch();
+    const sites = useSelector(state => state.sites);
     const [api, contextHolder] = notification.useNotification();
+    const [options, setOptions] = useState([]);
 
     const normFile = (e) => {
         console.log('Upload event:', e);
@@ -17,6 +20,18 @@ function AddPlace() {
         }
         return e?.fileList;
     };
+
+    useEffect(() => {
+        dispatch(getSite());  
+    }, []);
+
+    useEffect(() => {
+        let data = [];
+        sites.map(site => {
+            data.push({value: site._id, label: site.name});
+        });
+        setOptions(data);
+    }, [sites]);
 
     const onFinish = (values) => {
         //  axios handler goes here (POST)
@@ -87,7 +102,7 @@ function AddPlace() {
                             name="sites"
                             label="Sites ID"
                         >
-                            <Select />
+                            <Select options={options}/>
                         </Form.Item>
                         <Form.Item
                             name="country"

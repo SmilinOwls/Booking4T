@@ -4,11 +4,13 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as PlaceAction from '../../actions/PlaceAction';
 import { UploadOutlined, SearchOutlined, ArrowLeftOutlined } from '@ant-design/icons';
-import { Table, Popconfirm, Form, Input, Typography, Image, Upload, Button, Space, Rate, InputNumber } from 'antd';
+import { Table, Popconfirm, Form, Input, Typography, Image, Upload, Button, Space, Rate, InputNumber, message } from 'antd';
 import Highlighter from 'react-highlight-words';
 import AddPlace from './AddPlace';
 
 function Place({ places, actions }) {
+    const [messageApi, contextHolder] = message.useMessage();
+
     // Search 
     const [searchText, setSearchText] = useState('');
     const [searchedColumn, setSearchedColumn] = useState('');
@@ -150,7 +152,7 @@ function Place({ places, actions }) {
     };
     const handleDelete = (_id) => {
          // axios handler goes here (DELETE)
-         actions.deletePlace(_id);
+         actions.deletePlace(_id, messageApi);
          setData(places);
     };
     const normfile = (e) => {
@@ -385,6 +387,7 @@ function Place({ places, actions }) {
 
     return (
         <div className='mt-3'>
+            {contextHolder}
             {!isAdd ? (
                 <>
                     <div className='d-flex justify-content-between mb-3'>

@@ -1,15 +1,38 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {formItemLayout, tailFormItemLayout} from '../../utils/config'
-import { useDispatch, } from 'react-redux';
+import { useDispatch, useSelector} from 'react-redux';
 import { addRoom } from '../../actions/RoomAction';
+import { getPlace } from '../../actions/PlaceAction';
+import { getUser } from '../../actions/UserAction';
 import { InboxOutlined, MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
 import { Form, Input, Upload, DatePicker, Button, Row, Col, Image, InputNumber, Select, Rate, notification } from 'antd';
 const { RangePicker } = DatePicker;
 
 function AddRoom() {
-    const dispatch = useDispatch();
     const [api, contextHolder] = notification.useNotification();
     const [form] = Form.useForm();
+
+    const dispatch = useDispatch();
+    const places = useSelector(state => state.places);
+    const users = useSelector(state => state.users);
+    const [options, setOptions] = useState({});
+
+    useEffect(() => {
+        dispatch(getUser());
+        dispatch(getPlace());  
+    }, []);
+
+    useEffect(() => {
+        let data = {"users": [], "places": []};
+        users.map(user => {
+            data["users"].push({value: user._id, label: user.username});
+        });
+        places.map(place => {
+            data["places"].push({value: place._id, label: place.name});
+        });
+        setOptions(data);
+    }, [users, places]);
+
     const normFile = (e) => {
         console.log('Upload event:', e);
         if (Array.isArray(e)) {
@@ -68,15 +91,16 @@ function AddRoom() {
                         <Form.Item
                             name="owner"
                             label="Owner"
+                            
                         >
-                            <Select />
+                            <Select options={options["users"]}/>
                         </Form.Item>
                         <Form.Item
                             name="place"
                             label="Place"
                             
                         >
-                            <Select />
+                            <Select options={options["places"]}/>
                         </Form.Item>
                         <Form.Item
                             name="title"
