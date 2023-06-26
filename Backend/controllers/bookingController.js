@@ -105,7 +105,8 @@ const BookingControllers = {
                 paymentMethod,
                 orderStatus,
                 taxPrice,
-                checkOut
+                checkOut,
+                numOfGuest
             } = req.body;
             
             const order = await Booking.findById(req.params.id);
@@ -116,6 +117,7 @@ const BookingControllers = {
             order.orderStatus = orderStatus || order.orderStatus;
             order.taxPrice= taxPrice || order.taxPrice;
             order.checkOut = checkOut || order.checkOut;
+            order.numOfGuest = numOfGuest || order.numOfGuest || 0;
             const updatedOrder = await order.save();
             res.status(200).json(updatedOrder);
         } catch (error) {

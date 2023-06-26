@@ -16,7 +16,6 @@ export const getUser = () => {
 
 
 export const updateUser = (user) => {
-    console.log(user);
     return (dispatch) => {
         DataAPI.updateUser(user).then(() => {
             dispatch({

@@ -213,6 +213,18 @@ function OrderDetail({ actions }) {
                 <InputNumber min={0} />
               </Form.Item>
               <Form.Item
+                name="numOfGuest"
+                label="Guest Number"
+                rules={[
+                  {
+                    type: 'number',
+                  },
+
+                ]}
+              >
+                <InputNumber min={0} />
+              </Form.Item>
+              <Form.Item
                 name="totalPrice"
                 label="Total Price"
                 rules={[

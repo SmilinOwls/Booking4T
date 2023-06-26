@@ -18,7 +18,7 @@ export const getOrder = () => {
 export const updateOrder = (order) => {
 
   return (dispatch) => {
-    DataAPI.updateOrder(order).then((order) => {
+    DataAPI.updateOrder(order).then(() => {
       dispatch({
         type: UPDATE_ORDER,
         order: order

@@ -154,6 +154,7 @@ class DataAPI {
     }
     
     static async updateOrder(order){
+        console.log(order);
         try {
             const response = await axios.put(`${base_url}/book/admin/${order._id}`, order, configAxios);
             return response.data;
