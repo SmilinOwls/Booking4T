@@ -221,7 +221,6 @@ const DetailRoom = () => {
             <div>
               <p className="font-semibold text-[22px] text-red-700">Price: ${fixedPrice || 0}</p>
               <button
-                disabled={error !== ""}
                 onClick={() => handleAddToCart(detailRoom._id, qnt, nightOfDays)} 
                 className="w-full border bg-[#faa935] border-[#faa935] rounded-lg px-3 py-2 text-[#000]  font-semibold hover:text-red-700 transition-all"
                 
