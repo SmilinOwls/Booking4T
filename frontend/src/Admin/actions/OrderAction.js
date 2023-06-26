@@ -4,7 +4,7 @@ import DataAPI from '../utils/DataAPI';
 export const getOrder = () => {
 
   return (dispatch) => {
-    DataAPI.getAllOrders().then((orders) => {
+    DataAPI.getAllOrders().then(({orders}) => {
       dispatch({
         type: GET_ORDER,
         orders: orders

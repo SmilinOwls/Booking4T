@@ -62,8 +62,10 @@ const BookingControllers = {
         try {
             const orders = await Booking.find();
             let totalAmount = 0;
-
-            res.status(200).json(orders);
+            orders.forEach((order) => {
+                totalAmount += order.totalPrice;
+            });
+            res.status(200).json({orders, totalAmount});
         } catch (error) {
             res.status(500).json(error);
         }
