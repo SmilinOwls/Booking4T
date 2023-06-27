@@ -42,6 +42,15 @@ class DataAPI {
         }
     }
 
+    static async getPlaceById(id) {
+        try {
+            const response = await axios.get(`${base_url}/place/${id}`, configAxios);
+            return response.data;
+        } catch (error) {
+            throw error;
+        }
+    }
+
     static async addPlace(place) {
         try {
             const response = await axios.post(`${base_url}/place/admin`,place, configAxios);
@@ -182,6 +191,15 @@ class DataAPI {
         }
     }
 
+    // Review
+    static async deleteReview(id) {
+        try {
+            const response = await axios.delete(`${base_url}/place/user/review/${id}`, configAxios);
+            return response.data;
+        } catch (error) {
+            throw error;
+        }
+    }
 }
 
 export default DataAPI;

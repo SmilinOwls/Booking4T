@@ -49,7 +49,7 @@ const DetailNews = () => {
                     className="h-[350px] mb-4"
                   />
 
-                  {detailBlog?.detailPhotos.length !== 0 && (
+                  {detailBlog.detailPhotos?.length !== 0 && (
                     <img
                       src={detailBlog?.detailPhotos[0]}
                       alt="news"

@@ -2,7 +2,7 @@
 
 import { GET_USER, UPDATE_USER, DELETE_USER } from '../actions/types';
 
-export default function RoomReducer(state = [], action) {
+export default function UserReducer(state = [], action) {
   switch (action.type) {
     case GET_USER:
       return state.length !== 0 ?  state : action.users;

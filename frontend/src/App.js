@@ -27,6 +27,7 @@ import User from './Admin/pages/User/User';
 import Place from './Admin/pages/Place/Place';
 import Room from './Admin/pages/Room/Room';
 import OrderDetail from './Admin/pages/Order/OrderDetail';
+import PlaceReview from './Admin/pages/Place/PlaceReview';
 
 function App() {
   return (
@@ -126,7 +127,7 @@ function App() {
                   <User/>
                 </MainLayout>
               </Route>
-              <Route path="/api/blog/admin">
+              <Route path="/api/blog/admin" exact>
                 <MainLayout>
                   <Blog/>
                 </MainLayout>
@@ -149,6 +150,11 @@ function App() {
               <Route path="/api/book/admin/:id" exact>
                 <MainLayout>
                   <OrderDetail/>
+                </MainLayout>
+              </Route>
+              <Route path="/api/place/user/review" exact>
+                <MainLayout>
+                  <PlaceReview/>
                 </MainLayout>
               </Route>
             </Switch>

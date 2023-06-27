@@ -3,14 +3,15 @@ import 'react-quill/dist/quill.snow.css';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as PlaceAction from '../../actions/PlaceAction';
-import { UploadOutlined, SearchOutlined, ArrowLeftOutlined } from '@ant-design/icons';
+import { UploadOutlined, SearchOutlined, ArrowLeftOutlined, EyeOutlined } from '@ant-design/icons';
 import { Table, Popconfirm, Form, Input, Typography, Image, Upload, Button, Space, Rate, InputNumber, message } from 'antd';
 import Highlighter from 'react-highlight-words';
+import { useHistory } from 'react-router-dom';
 import AddPlace from './AddPlace';
 
 function Place({ places, actions }) {
     const [messageApi, contextHolder] = message.useMessage();
-
+    const history = useHistory();
     // Search 
     const [searchText, setSearchText] = useState('');
     const [searchedColumn, setSearchedColumn] = useState('');
@@ -125,7 +126,7 @@ function Place({ places, actions }) {
     const edit = (record) => {
         form.setFieldsValue({
             ...record,
-            placePic: [{uid: '-1', url: record.placePic}],
+            placePic: [{ uid: '-1', url: record.placePic }],
         });
         setEditingKey(record._id);
     };
@@ -139,21 +140,21 @@ function Place({ places, actions }) {
             console.log("Row", row);
             actions.updatePlace(
                 {
-                    ...row, 
+                    ...row,
                     _id: _id,
                     placePic: row.placePic[0].originFileObj ? URL.createObjectURL(row.placePic[0].originFileObj) : row.placePic[0].url
                 });
             setEditingKey('');
-            
+
         } catch (errInfo) {
             console.log('Validate Failed:', errInfo);
         }
 
     };
     const handleDelete = (_id) => {
-         // axios handler goes here (DELETE)
-         actions.deletePlace(_id, messageApi);
-         setData(places);
+        // axios handler goes here (DELETE)
+        actions.deletePlace(_id, messageApi);
+        setData(places);
     };
     const normfile = (e) => {
         if (Array.isArray(e)) {
@@ -173,7 +174,7 @@ function Place({ places, actions }) {
         var inputNode = <Input />;
         switch (dataIndex) {
             case "numReview":
-                inputNode = <InputNumber/>
+                inputNode = <InputNumber />
                 break;
             case "ratings":
                 inputNode = <Rate />;
@@ -281,7 +282,7 @@ function Place({ places, actions }) {
             dataIndex: "ratings",
             editable: true,
             width: "10%",
-            sorter: (a, b) => a.rating - b.rating,
+            sorter: (a, b) => a.ratings - b.ratings,
             sortDirections: ['ascend', 'descend'],
             filters: [{
                 text: 1,
@@ -305,7 +306,7 @@ function Place({ places, actions }) {
             }
             ],
             onFilter: (value, record) => {
-                return record.rating === value;
+                return record.ratings === value;
             },
             render: (value) => (
                 <Rate value={value} className='fs-5' />
@@ -314,9 +315,17 @@ function Place({ places, actions }) {
         {
             title: "Review Number",
             dataIndex: "numReviews",
-            editable: true,
+            editable: false,
             width: "10%",
-            ...getColumnSearchProps('numReviews')
+            render: (value, record) => (
+                <div className='d-flex justify-content-around align-items-center'>
+                    <div>{value}</div>
+                    <div><Button icon={<EyeOutlined />}
+                        onClick={() => {
+                            history.push({ pathname: `/api/place/user/review`, search: `?id=${record._id}`});
+                        }} /></div>
+                </div>
+            ),
         },
         {
             title: 'Operation',

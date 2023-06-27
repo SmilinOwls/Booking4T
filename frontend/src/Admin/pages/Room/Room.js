@@ -356,7 +356,7 @@ function Room({ rooms, actions }) {
             editable: true,
             width: "6%",
             sorter: (a, b) => a.ratings - b.ratings,
-            sortDirections: ['ascend', 'descend']
+            sortDirections: ['ascend', 'descend'],
         },
         {
             title: 'Operation',

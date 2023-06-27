@@ -125,7 +125,7 @@ function MainLayout({children}) {
                     <Link
                       className="dropdown-item py-1 mb-1 z-2"
                       style={{ height: "auto", lineHeight: "20px" }}
-                      to="/api/me/profile"
+                      to="/account"
                     >
                       View Profile
                     </Link>

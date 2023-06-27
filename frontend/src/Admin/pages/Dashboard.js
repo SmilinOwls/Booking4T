@@ -132,7 +132,7 @@ function Dashboard() {
 
   const orders = useSelector(state => state.orders);
   const users = useSelector(state => state.users);
-  const blogs = useSelector(state => state.blogs);
+  const blogs = useSelector(state => state.Blogs);
   const revenue = {};
   const diff = {};
 
