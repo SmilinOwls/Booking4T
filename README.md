@@ -3,7 +3,7 @@
 
 # Project: Hotel Booking And Management 
 
-> The Hotel Booking and Management project is a web application developed using **Node.js (ExpressJS)** for *Backend*, *React.js* for *frontend* and Moogoose for building database, as well. It provides a platform for users to search, book, and manage hotel reservations online. The project aims to streamline the hotel booking process and simplify hotel management tasks.
+> The Hotel Booking and Management project is a web application developed using **Node.js (ExpressJS)** for *Backend*, **React.js** for *frontend* and **Moogoose** for building and storing database, as well. It provides a platform for users to search, book, and manage hotel reservations online. The project aims to streamline the hotel booking process and simplify hotel management tasks.
 
 ## Prerequisites
 
@@ -88,7 +88,7 @@ Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduc
 
 - Additionally, the project includes a management system that allows hotel administrators to handle various tasks efficiently. Through the management system, administrators can view and manage reservations, update hotel details, add or remove rooms, and generate reports on occupancy and revenue.
 
-> The Hotel Booking and Management project utilizes modern web technologies to create a seamless and user-friendly experience for both customers and hotel administrators. It simplifies the hotel booking process, enhances efficiency in managing reservations, and provides valuable insights for hotel owners to make informed decisions.
+- The Hotel Booking and Management project utilizes modern web technologies to create a seamless and user-friendly experience for both customers and hotel administrators. It simplifies the hotel booking process, enhances efficiency in managing reservations, and provides valuable insights for hotel owners to make informed decisions.
 
 ## Authors
 
