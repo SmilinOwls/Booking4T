@@ -26,8 +26,10 @@ const NewsCard = ({news}) => {
     <div className="textContainer">
       <p style={{fontSize: "22px"}}>{news.title}</p>
       <p style={{fontSize: "16px", color: "#ddd"}}>
-        {news.fullText.length > 30 ? news.fullText.slice(0, 30) + "..." : news + "..."}
+        
+        <div dangerouslySetInnerHTML={{ __html: news.fullText.length > 30 ? news.fullText.slice(0, 30) + "..." : news + "..." }} ></div>
         {"... "}
+
       </p>
       <p onClick={handleClick} className="readMore">
             Read More

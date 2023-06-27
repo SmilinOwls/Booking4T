@@ -48,8 +48,7 @@ const DetailNews = () => {
                     width="100%"
                     className="h-[350px] mb-4"
                   />
-
-                  {detailBlog.detailPhotos?.length !== 0 && (
+                  {detailBlog.detailPhotos && detailBlog.detailPhotos.length !== 0 && (
                     <img
                       src={detailBlog?.detailPhotos[0]}
                       alt="news"
@@ -57,8 +56,9 @@ const DetailNews = () => {
                       className="h-[350px] mb-4"
                     />
                   )}
+                  
                   <p>
-                    {detailBlog.fullText}
+                    <div dangerouslySetInnerHTML={{ __html: detailBlog.fullText }} ></div>
                   </p>
                 </div>
                 <div className="mt-4">
