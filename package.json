@@ -8,6 +8,6 @@
     "server": "npm run start --prefix Backend",
     "watch": "npm run client & npm run server"
   },
-  "author": "",
+  "author": "Booking4T",
   "license": "ISC"
 }

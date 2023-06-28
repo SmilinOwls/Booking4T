@@ -13,6 +13,15 @@ class DataAPI {
             throw error;
         }
     }
+
+    static async getUserById(id) {
+        try {
+            const response = await axios.get(`${base_url}/user/${id}`, configAxios);
+            return response.data;
+        } catch (error) {
+            throw error;
+        }
+    }
     
     static async updateUser(user){
         try {
