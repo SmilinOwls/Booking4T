@@ -70,6 +70,7 @@ const placeControllers = {
             description,
             extraInfo,
             placePic,
+            reviews,
         } = req.body;
 
         const place = await Place.findById(req.params.id);
@@ -86,6 +87,7 @@ const placeControllers = {
             place.description = description || place.description;
             place.placePic = placePic || place.placePic;
             place.extraInfo = extraInfo || place.extraInfo;
+            place.reviews = reviews || place.reviews;
             const updatedPlace = await place.save();
             res.status(200).json(updatedPlace);
         } catch (error) {
@@ -181,11 +183,11 @@ const placeControllers = {
         })
     },
     deleteReview: async(req, res) => {
-        const place = await Place.findById(req.query.id);
+        const place = await Place.findById(req.query.placeId);
         if(!place){
             return res.status(404).json("Place not found !!!");
         }
-        const reviews = place.reviews.filter(rev => rev._id.toString() !== req.query.id.toString());
+        const reviews = place.reviews.filter(rev => rev._id.toString() !== req.query.reviewId.toString());
         let avg = 0;
         reviews.forEach((rev) => {
             avg += rev.rating;
@@ -200,7 +202,7 @@ const placeControllers = {
         const numReviews = reviews.length;
         try {
             await Place.findByIdAndUpdate(
-                req.query.id,
+                req.query.placeId,
                 {
                   reviews,
                   ratings,

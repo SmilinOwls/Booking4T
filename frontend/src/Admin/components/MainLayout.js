@@ -36,7 +36,7 @@ function MainLayout({children}) {
         <Menu
           theme="dark"
           mode="inline"
-          defaultSelectedKeys={['']}
+          defaultSelectedKeys={['/api']}
           onClick={({ key }) => {
             if (key === "logout") {
 

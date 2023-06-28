@@ -77,10 +77,20 @@ class DataAPI {
             throw error;
         }
     }
+    
 
     static async deletePlace(id){
         try {
             const response = await axios.delete(`${base_url}/place/admin/${id}`, configAxios);
+            return response.data;
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    static async deleteReview(placeId, reviewId){
+        try {
+            const response = await axios.delete(`${base_url}/place/user/review?placeId=${placeId}&reviewId=${reviewId}`, configAxios);
             return response.data;
         } catch (error) {
             throw error;
@@ -194,16 +204,6 @@ class DataAPI {
     static async getAllSites() {
         try {
             const response = await axios.get(`${base_url}/site`, configAxios);
-            return response.data;
-        } catch (error) {
-            throw error;
-        }
-    }
-
-    // Review
-    static async deleteReview(id) {
-        try {
-            const response = await axios.delete(`${base_url}/place/user/review/${id}`, configAxios);
             return response.data;
         } catch (error) {
             throw error;

@@ -30,6 +30,7 @@ export const addPlace = (place) => {
 export const updatePlace = (place) => {
     return (dispatch) => {
         DataAPI.updatePlace(place).then((place) => {
+            
             dispatch({
                 type: UPDATE_PLACE,
                 place: place
