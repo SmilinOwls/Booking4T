@@ -98,7 +98,7 @@ const placeControllers = {
             })
         }
         const room = await Room.find({place: req.params.id});
-        if(room.length === 0){
+        if(room.length !== 0){
             return res.status(404).json({
                 success: false,
                 message: "Room not found !!!"

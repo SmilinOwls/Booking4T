@@ -13,6 +13,12 @@ import cartReducer from './CartReducer';
 import { myOrderList, orderReducer } from './BookingReducer';
 import wishlistReducer from './WishlistReducer';
 import addSidebarReducer from './SidebarReducer';
+import HotelAdminReducer from './HotelAdminReducer';
+import RoomAdminReducer from './RoomAdminReducer';
+import BlogAdminReducer from './BlogAdminReducer';
+import OrderAdminReducer from './OrderAdminReducer';
+import UserAdminReducer from './UserAdminReducer';
+import SiteAdminReducer from './SiteAdminReducer';
 
 const rootReducer = combineReducers({
     hotels: hotelsReducer,
@@ -33,7 +39,13 @@ const rootReducer = combineReducers({
    wishlist: wishlistReducer,
    sidebar: addSidebarReducer,
    order: orderReducer,
-   myOrder: myOrderList
+   myOrder: myOrderList,
+   hotelAdmin: HotelAdminReducer,
+   roomAdmin: RoomAdminReducer,
+   blogAdmin: BlogAdminReducer,
+   orderAdmin: OrderAdminReducer,
+   userAdmin: UserAdminReducer,
+   siteAdmin: SiteAdminReducer,
 });
 
 export default rootReducer;
