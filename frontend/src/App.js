@@ -28,6 +28,9 @@ import Place from './Admin/pages/Place/Place';
 import Room from './Admin/pages/Room/Room';
 import OrderDetail from './Admin/pages/Order/OrderDetail';
 import PlaceReview from './Admin/pages/Place/PlaceReview';
+import PageNotFound from './Pages/PageNotFound';
+
+import {user} from './Admin/utils/config';
 
 function App() {
   return (
@@ -87,33 +90,33 @@ function App() {
                 </AppLayout>
               </Route>
               <Route path="/account/bookings" exact>
-                <AppLayout>
+                <AppLayout userAuth={user}>
                   <AccountBooking />
                 </AppLayout>
               </Route>
               <Route path="/account/memory" exact>
-                <AppLayout>
+                <AppLayout userAuth={user}>
                   <AccountMemory />
                 </AppLayout>
               </Route>
               <Route path="/account" exact>
-                <AppLayout>
+                <AppLayout userAuth={user}>
                   <AccountSetting />
                 </AppLayout>
               </Route>
 
               <Route path="/sign-up">
-                <AppLayout>
+                <AppLayout userAuth={user}>
                   <Signup />
                 </AppLayout>
               </Route>
               <Route path="/sign-in" exact>
-                <AppLayout>
+                <AppLayout userAuth={user}>
                   <Signin />
                 </AppLayout>
               </Route>
               <Route path="/logout">
-                <AppLayout>
+                <AppLayout userAuth={user}>
                   <LogOut />
                 </AppLayout>
               </Route>
@@ -156,6 +159,9 @@ function App() {
                 <MainLayout>
                   <PlaceReview/>
                 </MainLayout>
+              </Route>
+              <Route path="*" exact>
+                <PageNotFound/>
               </Route>
             </Switch>
           </PrevFilterContext>

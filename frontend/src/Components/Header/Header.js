@@ -2,10 +2,10 @@ import React, { useRef, useEffect } from "react";
 import "./Header.css";
 import { Button, Container, Row } from "reactstrap";
 import { NavLink, Link, useHistory } from "react-router-dom";
-import { useSelector, useDispatch } from 'react-redux';
-import { getShowCart } from '../../Actions/SidebarAction';
-import Wishlist from '../Wishlist';
-import { BiBook } from 'react-icons/bi'
+import { useSelector, useDispatch } from "react-redux";
+import { getShowCart } from "../../Actions/SidebarAction";
+import Wishlist from "../Wishlist";
+import { BiBook } from "react-icons/bi";
 import logo from "../../Assets/images/4T-logo.png";
 const nav_links = [
   {
@@ -113,6 +113,11 @@ const Header = () => {
                         </Link>
 
                       </div>
+                      {userInfo.isAdmin && (
+                        <Button className="btn primary__btn">
+                          <Link to="/dashboard">Dashboard</Link>
+                        </Button>)
+                      }
                       <div className="mx-2 cursor-pointer relative" onClick={toggleCart}>
                         <BiBook size={40} />
                         <span className="absolute top-0 right-0 border w-[15px] h-[15px] bg-[#FFA41B] text-black rounded-full"></span>

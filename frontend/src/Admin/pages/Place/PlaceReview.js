@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import DataAPI from '../../utils/DataAPI';
 import { DeleteOutlined } from '@ant-design/icons';
-import { updatePlace } from '../../actions/PlaceAction';
 import { Row, Col, List, Card, Popconfirm, Avatar, Rate } from 'antd';
 
 function PlaceReview() {
@@ -16,7 +15,6 @@ function PlaceReview() {
             try {
                 const newReviews = [];
                 const place = await DataAPI.getPlaceById(id);
-                console.log(place);
                 place.reviews.length !== 0 && await Promise.all(place.reviews.map(async (review) => {
                     const user = await DataAPI.getUserById(review.user);
                     newReviews.push({ ...review, userInfo: user });
@@ -45,6 +43,7 @@ function PlaceReview() {
 
     return (
         <div className='mt-3'>
+            
             <h3 className='my-2'>Reviews On Place</h3>
             <List
                 className='mt-4'
@@ -69,7 +68,7 @@ function PlaceReview() {
                                     <span style={{ cursor: "pointer" }}><DeleteOutlined /></span>
                                 </Popconfirm>]}
 
-                            extra={<Rate value={item.rating}></Rate>}
+                            extra={<Rate value={item.rating}>{item.rating}</Rate>}
 
                         >
                             <List.Item.Meta

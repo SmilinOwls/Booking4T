@@ -37,10 +37,6 @@ main {
   overflow-y: scroll !important;
 }
 
-p {
-  margin-bottom: 0px;
-}
-
 .ql-editor {
   min-height: 10rem;
 }

@@ -29,7 +29,7 @@ const CartItem = ({ wishlist, handleRemoveCart }) => {
         <div className="cart-item__price">{address}</div>
         <div className="cart-item__count flex justify-between">
           <p>Ratings: {ratings}</p>
-          <div className="text-blue-600" onClick={handleNavigate}>View</div>
+          <div className="text-blue-600 cursor-pointer" onClick={handleNavigate}>View</div>
         </div>
       </div>
       <button className="cart-item__rm" onClick={handleRemoveCart}>

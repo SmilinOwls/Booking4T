@@ -5,7 +5,7 @@ import {
   MenuUnfoldOutlined,
   UserOutlined,
 } from '@ant-design/icons';
-import { AiOutlineDashboard } from 'react-icons/ai';
+import { AiOutlineDashboard, AiOutlineBackward } from 'react-icons/ai';
 import { FaBloggerB, FaHotel } from 'react-icons/fa';
 import { MdBedroomParent } from 'react-icons/md';
 import { LuClipboardList } from 'react-icons/lu';
@@ -13,18 +13,18 @@ import { BiCategory } from 'react-icons/bi';
 import { IoIosNotifications } from 'react-icons/io';
 import './index.css';
 import { user } from '../utils/config';
-
 import { Button, Layout, Menu, theme } from 'antd';
 const { Header, Sider, Content } = Layout;
 
 function MainLayout({children}) {
+  if(user === null || !user.isAdmin) return (<Redirect to="/" replace/>);
   const [collapsed, setCollapsed] = useState(false)
   const history = useHistory();;
   const {
     token: { colorBgContainer },
   } = theme.useToken();
   return (
-    <Layout>
+    <Layout className='pt-0'>
       <Sider trigger={null} collapsible collapsed={collapsed} className="h-auto">
         <div className="logo-admin">
           {collapsed ?
@@ -82,10 +82,15 @@ function MainLayout({children}) {
               icon: <LuClipboardList className="fs-4" />,
               label: 'Order',
             },
+            {
+              key: '/',
+              icon: <AiOutlineBackward className='fs-4'/>,
+              label: 'Back'
+            }
           ]}
         />
       </Sider>
-      <Layout>
+      <Layout className='pt-0'>
         <Header
           className='d-flex justify-content-between ps-1 pe-3'
           style={{
@@ -136,7 +141,7 @@ function MainLayout({children}) {
                       style={{ height: "auto", lineHeight: "20px" }}
                       to="/logout"
                     >
-                      Signout
+                      Log out
                     </Link>
                   </li>
                 </ul>
