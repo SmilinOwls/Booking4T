@@ -1,21 +1,48 @@
-import React from 'react'
-import CustomInput from '../../../Components/Admin/CustomInpur';
-import ReactQuill from "react-quill";
-import 'react-quill/dist/quill.snow.css';
+import React, { useState } from 'react'
+import { UploadOutlined } from '@ant-design/icons';
+import { Button, Upload, Modal } from 'antd';
 
-function BlogDetail({formData, handleChange}) {
+function ImageBlog({ formData, setFormData }) {
+    const [imagePreview, setImagePreview] = useState(null);
+    const [open, setOpen] = useState(true);
+    const handleUpload = ({ fileList }) => {
+        setFormData({ ...formData, image: fileList });
+        console.log(formData);
+    }
+
     return (
         <>
-            <div className="mt-3 w-50">
-                <form action="" method="">
-                    <h5>Title</h5>
-                    <CustomInput type="text" name="title" label="Enter blog title..." value={formData.title} onChange={handleChange}/>
-                    <h5>Full Text</h5>
-                    <ReactQuill theme="snow" placeholder='Enter blog content...' value={formData.fullText} onChange={handleChange} className="bg-white h-50" />
-                </form>
-            </div>
+            <h5>Image</h5>
+            <Upload
+                listType="picture-card"
+                fileList={formData.image}
+                accept=".png, .jpeg"
+                onPreview={(file) => { setImagePreview(file); setOpen(true); }}
+                beforeUpload={() => false}
+                onChange={handleUpload}
+                maxCount={1}
+            >
+                <Button icon={<UploadOutlined />}>Upload</Button>
+            </Upload>
+            {imagePreview !== null && <Modal open={open} onCancel={() => setOpen(false)} footer={<Button key="ok" type="primary" onClick={() => setImagePreview(null)}>
+                OK
+            </Button>}>
+                <div className='container'>
+                    <div className='row'>
+                        <div className='col'>
+                        <img src={imagePreview.thumbUrl} className={{ width: "100%" }} alt="" />
+                        </div>
+                        <div className='col'>
+                        <p className='fs-5'><b>Name:</b> {imagePreview.name}</p>
+                        <p className='fs-5'><b>Size:</b> {imagePreview.size}</p>
+                        <p className='fs-5'><b>Date:</b> {imagePreview.lastModifiedDate.toLocaleString()}</p>
+                        </div>
+                    </div>
+                </div>
+            </Modal>
+            }
         </>
     )
 }
 
-export default BlogDetail
+export default ImageBlog;

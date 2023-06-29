@@ -67,7 +67,7 @@ function Order({ orders, actions }) {
                                 </div>}
                             actions={[
                                 <EditOutlined onClick={() => {
-                                    history.push({pathname: `/api/book/admin/${item._id}`, state: { order: item } });
+                                    history.push({pathname: `/book/${item._id}`, state: { order: item } });
                                 }}></EditOutlined>
                                 ,
                                 <Popconfirm title="Sure to delete?" onConfirm={() => actions.deleteOrder(item._id)}>

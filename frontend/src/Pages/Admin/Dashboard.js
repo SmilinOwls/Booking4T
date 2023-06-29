@@ -177,7 +177,7 @@ function Dashboard() {
           </div>
           <div className="d-flex flex-column align-items-end">
             <h6 style={{ color: 'green' }}> <BsArrowUpRight /> 10%</h6>
-            <div className='desc'><Link to='/api/user/admin'>View more</Link></div>
+            <div className='desc'><Link to='/admin/user'>View more</Link></div>
           </div>
         </div>
         <div className='d-flex flex-grow-1 justify-content-between align-o bg-white rounded-3 p-3'>
@@ -186,7 +186,7 @@ function Dashboard() {
           </div>
           <div className="d-flex flex-column align-items-end">
             <h6 style={{ color: 'green' }}> <BsArrowUpRight /> 20%</h6>
-            <div className='desc'><Link to='/api/blog/admin'>View more</Link></div>
+            <div className='desc'><Link to='/admin/blog'>View more</Link></div>
           </div>
         </div>
         <div className='d-flex flex-grow-1 justify-content-between align-o bg-white rounded-3 p-3'>
@@ -195,7 +195,7 @@ function Dashboard() {
           </div>
           <div className="d-flex flex-column align-items-between">
             <h6 style={{ color: 'green' }}> <BsArrowUpRight /> 15%</h6>
-            <div className='desc'><Link to='/api/book'>View more</Link></div>
+            <div className='desc'><Link to='/admin/book'>View more</Link></div>
           </div>
         </div>
       </div>

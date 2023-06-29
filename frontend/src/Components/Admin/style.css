@@ -26,11 +26,6 @@ header {
 main {
   overflow-y: scroll !important;
 }
-
-p {
-  margin-bottom: 0px;
-}
-
 .ql-editor {
   min-height: 10rem;
 }
@@ -109,10 +104,6 @@ p {
   font-family: Roboto !important;
   color: var(--color-828599);
   margin-top: 20px;
-}
-
-section {
-  padding: 0 !important;
 }
 
 img,

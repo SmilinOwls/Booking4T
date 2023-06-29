@@ -2,7 +2,7 @@ import React from 'react'
 
 function PageNotFound() {
   return (
-    <div className="container-fluid" style={{background:"#95c2de", width:"100%", height:"700px", overflowX:"hidden", marginTop: "50px"}}>
+    <div className="container-fluid" style={{background:"#95c2de", width:"100%", height:"700px", overflowX:"hidden"}}>
     <div className="mainbox">
         <div className="d-flex" style={{justifyContent:"center", alignItems:"center", color:"#fff"}}>
           <div className="err" style={{fontSize:"11rem"}}>4</div>

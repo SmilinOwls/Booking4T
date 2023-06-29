@@ -178,7 +178,7 @@ function User({ users, actions }) {
                             ]}
                         >
                             <Meta
-                                avatar={<Avatar src={item.profilePic} />}
+                                avatar={<Avatar src={item.profilePic ? item.profilePic : "https://haycafe.vn/wp-content/uploads/2022/02/Avatar-trang-den.png"} />}
                                 title={item.username}
                                 description={item.email}
                             >

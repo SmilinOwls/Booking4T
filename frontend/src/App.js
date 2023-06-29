@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import AppLayout from "./Layouts/AppLayout";
 import "./App.css";
+import AdminRoute from './Route/AdminRoute';
 import Home from "./Pages/Home/Home";
 import Hotels from "./Pages/Hotels/Hotels";
 import News from "./Pages/News/News";
@@ -18,6 +19,7 @@ import AccountSetting from "./Pages/AccountSetting";
 import AccountBooking from "./Pages/AccountSetting/AccountBooking";
 import AccountMemory from "./Pages/AccountSetting/AccountMemory";
 import SearchResult from "./Pages/SearchResult";
+import PageNotFound from './Pages/PageNotFound';
 
 import Dashboard from './Pages/Admin/Dashboard';
 import MainLayout from './Components/Admin/MainLayout';
@@ -26,6 +28,7 @@ import Hotel from './Pages/Admin/HotelAdmin/Hotel';
 import Blog from './Pages/Admin/BlogAdmin/Blog';
 import User from './Pages/Admin/UserAdmin/User';
 import Order from './Pages/Admin/OrderAdmin/Order';
+import OrderDetail from './Pages/Admin/OrderAdmin/OrderDetail'
 
 function App() {
   return (
@@ -99,36 +102,41 @@ function App() {
                     <AccountSetting />
                   </AppLayout>
               </Route>
-              <Route path="/dashboard" exact>
+              <AdminRoute path="/dashboard" exact>
                 <MainLayout>
                   <Dashboard/>
                 </MainLayout>
-              </Route>
-              <Route path="/admin/place" exact>
+              </AdminRoute>
+              <AdminRoute path="/admin/place" exact>
                 <MainLayout>
                   <Hotel />
                 </MainLayout>
-              </Route>
-              <Route path="/admin/room" exact>
+              </AdminRoute>
+              <AdminRoute path="/admin/room" exact>
                 <MainLayout>
                   <Room />
                 </MainLayout>
-              </Route>
-              <Route path="/admin/blog" exact>
+              </AdminRoute>
+              <AdminRoute path="/admin/blog" exact>
                 <MainLayout>
                   <Blog />
                 </MainLayout>
-              </Route>
-              <Route path="/admin/user" exact>
+              </AdminRoute>
+              <AdminRoute path="/admin/user" exact>
                 <MainLayout>
                   <User />
                 </MainLayout>
-              </Route>
-              <Route path="/book" exact>
+              </AdminRoute>
+              <AdminRoute path="/book" exact>
                 <MainLayout>
                   <Order />
                 </MainLayout>
-              </Route>
+              </AdminRoute>
+              <AdminRoute path="/book/:id" exact>
+                <MainLayout>
+                    <OrderDetail />
+                </MainLayout>
+              </AdminRoute>
               <Route path="/sign-up">
                   <AppLayout>
                       <Signup />
@@ -143,6 +151,9 @@ function App() {
                   <AppLayout>
                       <LogOut />
                   </AppLayout>
+                </Route>
+                <Route path="*">
+                    <PageNotFound />
                 </Route>
             </Switch>
           </PrevFilterContext>
