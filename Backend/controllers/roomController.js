@@ -4,16 +4,8 @@ const ApiFeature = require("../utils/ApiFeature")
 
 const roomControllers = {
     createRoom: async(req, res) => {
-        const place = await Place.findById(req.params.id);
-            if(!place){
-                return res.status(404).json({
-                    success: false,
-                    message: "Place not found !!!"
-                })
-            }
         const newRoom = await Room({
             ...req.body,
-            place: req.params.id
         });
         try {
             const savedRoom = await newRoom.save();

@@ -3,7 +3,7 @@ const authMiddleware = require("../middleware/authMiddleware");
 const router = require("express").Router();
 
 // Create Room
-router.post("/admin/:id", authMiddleware.authorizeRole, roomControllers.createRoom);
+router.post("/admin/", authMiddleware.authorizeRole, roomControllers.createRoom);
 // Get all rooms
 router.get("/", roomControllers.getAllRooms);
 //Get detail room

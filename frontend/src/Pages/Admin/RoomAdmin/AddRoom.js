@@ -13,7 +13,7 @@ function AddRoom() {
     const [form] = Form.useForm();
 
     const dispatch = useDispatch();
-    const places = useSelector(state => state.placeAdmin);
+    const places = useSelector(state => state.hotelAdmin);
     const users = useSelector(state => state.userAdmin);
     const [options, setOptions] = useState({});
 
@@ -21,7 +21,7 @@ function AddRoom() {
         dispatch(getUser());
         dispatch(getPlace());  
     }, []);
-
+    console.log(places);
     useEffect(() => {
         let data = {"users": [], "places": []};
         users.map(user => {

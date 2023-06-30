@@ -1,23 +1,29 @@
-import React, { useEffect } from "react";
+import React, { useLayoutEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, Link, useHistory } from "react-router-dom";
 import { Container, Row, Col } from "reactstrap";
 import "./style.css";
 import { quoteNewsData } from "../../utils/fakeData";
-import {getDetailBlog} from '../../Actions/BlogsAction'
+import { getDetailBlog } from "../../Actions/BlogsAction";
+
 
 const DetailNews = () => {
-  const {newId} = useParams()
-  const { detailBlog, isLoading } = useSelector(state => state.detailBlogs);
+  const { detailBlog, isLoading } = useSelector((state) => state.detailBlogs);
   const { blogs } = useSelector((state) => state.blogs);
+  const { newId } = useParams();
+  console.log(detailBlog);
+
   const history = useHistory();
   const dispatch = useDispatch();
-  const handleClick = (item) => {
-    history.push(`/new/${item._id}`)
-  }
-  useEffect(() => {
+  useLayoutEffect(() => {
     dispatch(getDetailBlog(newId))
   }, [newId]);
+
+
+  const handleClick = (item) => {
+    history.push(`/new/${item._id}`);
+  };
+ 
   return (
     <>
       {isLoading && <div>Loading ...</div>}
@@ -51,15 +57,13 @@ const DetailNews = () => {
 
                   {detailBlog.detailPhotos?.length !== 0 && (
                     <img
-                      src={detailBlog?.detailPhotos[0]}
+                      src={detailBlog.detailPhotos[0]}
                       alt="news"
                       width="100%"
                       className="h-[350px] mb-4"
                     />
                   )}
-                  <p>
-                    {detailBlog.fullText}
-                  </p>
+                  <p>{detailBlog.fullText}</p>
                 </div>
                 <div className="mt-4">
                   <Row>
