@@ -120,42 +120,42 @@ function App() {
                   <LogOut />
                 </AppLayout>
               </Route>
-              <Route path="/api" exact>
+              <Route path="/admin/dashboard" exact>
                 <MainLayout>
                   <Dashboard/>
                 </MainLayout>
               </Route>
-              <Route path="/api/user/admin" exact>
+              <Route path="/admin/user" exact>
                 <MainLayout>
                   <User/>
                 </MainLayout>
               </Route>
-              <Route path="/api/blog/admin" exact>
+              <Route path="/admin/blog" exact>
                 <MainLayout>
                   <Blog/>
                 </MainLayout>
               </Route>
-              <Route path="/api/place/admin" exact>
+              <Route path="/admin/place" exact>
                 <MainLayout>
                   <Place/>
                 </MainLayout>
               </Route>
-              <Route path="/api/room/admin" exact>
+              <Route path="/admin/room" exact>
                 <MainLayout>
                   <Room/>
                 </MainLayout>
               </Route>
-              <Route path="/api/book" exact>
+              <Route path="/admin/book" exact>
                 <MainLayout>
                   <Order/>
                 </MainLayout>
               </Route>
-              <Route path="/api/book/admin/:id" exact>
+              <Route path="/admin/book/:id" exact>
                 <MainLayout>
                   <OrderDetail/>
                 </MainLayout>
               </Route>
-              <Route path="/api/place/user/review" exact>
+              <Route path="/admin/place/user/review" exact>
                 <MainLayout>
                   <PlaceReview/>
                 </MainLayout>

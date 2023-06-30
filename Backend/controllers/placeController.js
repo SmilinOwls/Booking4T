@@ -143,6 +143,7 @@ const placeControllers = {
               );
             if(alreadyReview){
                 res.status(400).json("Place already reviewed !!!");
+                return;
             }
             const review = {
                 user: req.user.id,

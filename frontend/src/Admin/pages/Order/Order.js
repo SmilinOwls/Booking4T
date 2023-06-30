@@ -53,7 +53,7 @@ function Order({ orders, actions }) {
                 renderItem={(item) => (
                     <List.Item>
                         <Card
-                            style={{ width: 300, backgroundColor: (item.orderStatus === "Processing") ? "#87CEFA" : "#FFE87C" }}
+                            style={{ width: 270, backgroundColor: (item.orderStatus === "Processing") ? "#87CEFA" : "#FFE87C" }}
                             hoverable
                             extra={
                                 <div className='d-flex flex-column align-items-end fst-italic'>
@@ -61,13 +61,13 @@ function Order({ orders, actions }) {
                                     <div>{dayjs(item.paidAt).format('HH:mm')}</div>
                                 </div>}
                             title={
-                                <div className='border-dark border-opacity-25 bg-body w-75 rounded-3 px-2'>
+                                <div className='border-dark border-opacity-25 bg-body w-75 rounded-3 ps-1 text-[14px]'>
                                     {item.orderStatus === "Processing" ? <FcProcess  {...style} /> : <FcApproval  {...style} />}
                                     {item.orderStatus}
                                 </div>}
                             actions={[
                                 <EditOutlined onClick={() => {
-                                    history.push({pathname: `/api/book/admin/${item._id}`, state: { order: item } });
+                                    history.push({pathname: `/admin/book/${item._id}`, state: { order: item } });
                                 }}></EditOutlined>
                                 ,
                                 <Popconfirm title="Sure to delete?" onConfirm={() => actions.deleteOrder(item._id)}>
@@ -77,7 +77,7 @@ function Order({ orders, actions }) {
                         >
                             <Form
                                 labelCol={{
-                                    span: 10,
+                                    span: 11,
                                 }}
                                 wrapperCol={{
                                     span: 14,

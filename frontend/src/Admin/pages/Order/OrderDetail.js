@@ -68,7 +68,7 @@ function OrderDetail({ actions }) {
         type: 'success',
         content: 'Delete order successfully!',
         duration: 2,
-      }).then(() => history.push('/api/book'));
+      }).then(() => history.push('/admin/book'));
     }, 1000);
   };
 
@@ -97,7 +97,7 @@ function OrderDetail({ actions }) {
         className='text-primary mb-3 d-flex align-items-center'
         style={{ cursor: "pointer" }}
       >
-        <ArrowLeftOutlined /><Link to='/api/book' className='ms-2 text-decoration-none'>Back to Order List</Link>
+        <ArrowLeftOutlined /><Link to='/admin/book' className='ms-2 text-decoration-none'>Back to Order List</Link>
       </div>
       <h3 className="mb-3">Update Order</h3>
       <div className='row'>
@@ -389,7 +389,7 @@ function OrderDetail({ actions }) {
       </div>
 
       <Modal title="System Message" open={isModal} onCancel={() => setModal(false)} footer={[
-        <Button onClick={() => history.push('/api/book')} key="link">
+        <Button onClick={() => history.push('/admin/book')} key="link">
           Return
         </Button>,
         <Button key="btn" onClick={() => setModal(false)} type="primary">OK</Button>,

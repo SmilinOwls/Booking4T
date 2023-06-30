@@ -52,7 +52,7 @@ function PlaceReview() {
                 className='text-primary mb-3'
                 style={{ cursor: "pointer" }}
             >
-                <Link to="/api/place/admin" className='d-flex align-items-center text-decoration-none'><ArrowLeftOutlined /><span className='ms-2'>Back to Place List</span></Link>
+                <Link to="/admin/place" className='d-flex align-items-center text-decoration-none'><ArrowLeftOutlined /><span className='ms-2'>Back to Place List</span></Link>
             </div>
             <h3 className='my-2'>Reviews On Place</h3>
             <List

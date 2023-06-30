@@ -106,7 +106,7 @@ const Header = () => {
                       <div className="ml-3 cursor-pointer" style={{minWidth: "200px"}}>
                       {userInfo.isAdmin && (
                         <Button className="btn primary__btn mx-2">
-                          <Link to="/api">Dashboard</Link>
+                          <Link to="/admin/dashboard">Dashboard</Link>
                         </Button>)
                       }
                         <Link to="/account">

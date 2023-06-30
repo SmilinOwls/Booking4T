@@ -322,7 +322,7 @@ function Place({ places, actions }) {
                     <div>{value}</div>
                     <div><Button icon={<EyeOutlined />}
                         onClick={() => {
-                            history.push({ pathname: `/api/place/user/review`, search: `?id=${record._id}`});
+                            history.push({ pathname: `/admin/place/user/review`, search: `?id=${record._id}`});
                         }} /></div>
                 </div>
             ),

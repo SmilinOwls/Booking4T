@@ -40,7 +40,7 @@ function MainLayout({children}) {
         <Menu
           theme="dark"
           mode="inline"
-          defaultSelectedKeys={[pathname]}
+          selectedKeys={[pathname]}
           onClick={({ key }) => {
             if (key === "logout") {
 
@@ -50,39 +50,39 @@ function MainLayout({children}) {
           }}
           items={[
             {
-              key: '/api',
+              key: '/admin/dashboard',
               icon: <AiOutlineDashboard className="fs-4" />,
               label: 'Dashboard',
             },
             {
-              key: '/api/user/admin',
+              key: '/admin/user',
               icon: <UserOutlined className="fs-4" />,
               label: 'User',
             },
             {
-              key: '/api/catalog/admin',
+              key: '/admin/catalog',
               icon: <BiCategory className="fs-4" />,
               label: 'Catalog',
               children: [
                 {
-                  key: '/api/place/admin',
+                  key: '/admin/place',
                   icon: <FaHotel className="fs-4" />,
                   label: 'Place'
                 },
                 {
-                  key: '/api/room/admin',
+                  key: '/admin/room',
                   icon: <MdBedroomParent className="fs-4" />,
                   label: 'Room'
                 },
               ]
             },
             {
-              key: '/api/blog/admin',
+              key: '/admin/blog',
               icon: <FaBloggerB className="fs-4" />,
               label: 'Blog',
             },
             {
-              key: '/api/book',
+              key: '/admin/book',
               icon: <LuClipboardList className="fs-4" />,
               label: 'Order',
             },
