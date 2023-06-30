@@ -15,16 +15,18 @@ import './index.css';
 import { user } from '../utils/config';
 import { Redirect }  from 'react-router-dom';
 import { Button, Layout, Menu, theme } from 'antd';
+import { useLocation } from 'react-router-dom';
 const { Header, Sider, Content } = Layout;
 
 function MainLayout({children}) {
-  
+  const { pathname } = useLocation();
   const [collapsed, setCollapsed] = useState(false);
   const history = useHistory();
   if(user === null || !user.isAdmin) return (<Redirect to="/" replace/>);
   const {
     token: { colorBgContainer },
   } = theme.useToken();
+  
   return (
     <Layout className='pt-0'>
       <Sider trigger={null} collapsible collapsed={collapsed} className="h-auto">
@@ -38,7 +40,7 @@ function MainLayout({children}) {
         <Menu
           theme="dark"
           mode="inline"
-          defaultSelectedKeys={['/api']}
+          defaultSelectedKeys={[pathname]}
           onClick={({ key }) => {
             if (key === "logout") {
 

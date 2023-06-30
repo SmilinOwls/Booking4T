@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import DataAPI from '../../utils/DataAPI';
-import { DeleteOutlined } from '@ant-design/icons';
+import { DeleteOutlined, ArrowLeftOutlined } from '@ant-design/icons';
 import { Row, Col, List, Card, Popconfirm, Avatar, Rate } from 'antd';
 
 function PlaceReview() {
@@ -16,8 +16,13 @@ function PlaceReview() {
                 const newReviews = [];
                 const place = await DataAPI.getPlaceById(id);
                 place.reviews.length !== 0 && await Promise.all(place.reviews.map(async (review) => {
-                    const user = await DataAPI.getUserById(review.user);
-                    newReviews.push({ ...review, userInfo: user });
+                    try {
+                        const user = await DataAPI.getUserById(review.user);
+                        newReviews.push({ ...review, userInfo: user });
+                    } catch (error) {
+
+                    }
+
                 }));
                 setPlace({ ...place, reviews: [...newReviews] });
                 setReviews(newReviews);
@@ -43,7 +48,12 @@ function PlaceReview() {
 
     return (
         <div className='mt-3'>
-            
+            <div
+                className='text-primary mb-3'
+                style={{ cursor: "pointer" }}
+            >
+                <Link to="/api/place/admin" className='d-flex align-items-center text-decoration-none'><ArrowLeftOutlined /><span className='ms-2'>Back to Place List</span></Link>
+            </div>
             <h3 className='my-2'>Reviews On Place</h3>
             <List
                 className='mt-4'
@@ -68,7 +78,7 @@ function PlaceReview() {
                                     <span style={{ cursor: "pointer" }}><DeleteOutlined /></span>
                                 </Popconfirm>]}
 
-                            extra={<Rate value={item.rating}>{item.rating}</Rate>}
+                            extra={<div className='fw-bold'><Rate value={item.rating} className="me-3" />{item.rating}</div>}
 
                         >
                             <List.Item.Meta

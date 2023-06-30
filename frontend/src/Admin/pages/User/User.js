@@ -140,6 +140,9 @@ function User({ users, actions }) {
                 className='mt-4'
                 grid={{ gutter: 16 }}
                 dataSource={dataClone}
+                pagination={{
+                    pageSize: 10,
+                }}
                 renderItem={(item) => (
                     <List.Item>
                         <Card

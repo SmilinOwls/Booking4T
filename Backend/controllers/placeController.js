@@ -70,9 +70,7 @@ const placeControllers = {
             description,
             extraInfo,
             placePic,
-            reviews,
         } = req.body;
-
         const place = await Place.findById(req.params.id);
         if(!place){
             return res.status(404).json({
@@ -87,7 +85,6 @@ const placeControllers = {
             place.description = description || place.description;
             place.placePic = placePic || place.placePic;
             place.extraInfo = extraInfo || place.extraInfo;
-            place.reviews = reviews || place.reviews;
             const updatedPlace = await place.save();
             res.status(200).json(updatedPlace);
         } catch (error) {

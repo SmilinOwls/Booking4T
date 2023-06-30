@@ -98,7 +98,12 @@ function AddRoom() {
                         <Form.Item
                             name="place"
                             label="Place"
-                            
+                            rules={[
+                                {
+                                    required: true,
+                                    message: 'Please select Place',
+                                },
+                            ]}
                         >
                             <Select options={options["places"]}/>
                         </Form.Item>

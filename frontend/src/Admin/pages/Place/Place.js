@@ -173,7 +173,7 @@ function Place({ places, actions }) {
     }) => {
         var inputNode = <Input />;
         switch (dataIndex) {
-            case "numReview":
+            case "numReviews":
                 inputNode = <InputNumber />
                 break;
             case "ratings":
@@ -280,7 +280,7 @@ function Place({ places, actions }) {
         {
             title: "Ratings",
             dataIndex: "ratings",
-            editable: true,
+            editable: false,
             width: "10%",
             sorter: (a, b) => a.ratings - b.ratings,
             sortDirections: ['ascend', 'descend'],
