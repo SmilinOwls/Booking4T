@@ -13,13 +13,15 @@ import { BiCategory } from 'react-icons/bi';
 import { IoIosNotifications } from 'react-icons/io';
 import './index.css';
 import { user } from '../utils/config';
+import { Redirect }  from 'react-router-dom';
 import { Button, Layout, Menu, theme } from 'antd';
 const { Header, Sider, Content } = Layout;
 
 function MainLayout({children}) {
+  
+  const [collapsed, setCollapsed] = useState(false);
+  const history = useHistory();
   if(user === null || !user.isAdmin) return (<Redirect to="/" replace/>);
-  const [collapsed, setCollapsed] = useState(false)
-  const history = useHistory();;
   const {
     token: { colorBgContainer },
   } = theme.useToken();

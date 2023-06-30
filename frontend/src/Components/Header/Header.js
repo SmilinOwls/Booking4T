@@ -103,7 +103,12 @@ const Header = () => {
                 {
                   userInfo ? (
                     <>
-                      <div className="ml-3 cursor-pointer">
+                      <div className="ml-3 cursor-pointer" style={{minWidth: "200px"}}>
+                      {userInfo.isAdmin && (
+                        <Button className="btn primary__btn mx-2">
+                          <Link to="/api">Dashboard</Link>
+                        </Button>)
+                      }
                         <Link to="/account">
                           <img
                             src={userInfo.profilePic ? userInfo.profilePic : "https://i.pravatar.cc/150?img=56"}
@@ -111,13 +116,8 @@ const Header = () => {
                             className="rounded-full w-[40px]"
                           />
                         </Link>
-
                       </div>
-                      {userInfo.isAdmin && (
-                        <Button className="btn primary__btn">
-                          <Link to="/dashboard">Dashboard</Link>
-                        </Button>)
-                      }
+                     
                       <div className="mx-2 cursor-pointer relative" onClick={toggleCart}>
                         <BiBook size={40} />
                         <span className="absolute top-0 right-0 border w-[15px] h-[15px] bg-[#FFA41B] text-black rounded-full"></span>

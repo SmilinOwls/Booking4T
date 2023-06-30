@@ -109,7 +109,7 @@ class DataAPI {
 
     static async addRoom(room) {
         try {
-            const response = await axios.post(`${base_url}/room/admin`,room, configAxios);
+            const response = await axios.post(`${base_url}/room/admin/${room.place}`,room, configAxios);
             return response.data;
         } catch (error) {
             throw error;

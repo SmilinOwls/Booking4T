@@ -1,13 +1,13 @@
-import React, { useEffect } from "react";
+import React, { useLayoutEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, Link, useHistory } from "react-router-dom";
 import { Container, Row, Col } from "reactstrap";
 import "./style.css";
 import { quoteNewsData } from "../../utils/fakeData";
-import {getDetailBlog} from '../../Actions/BlogsAction'
+import { getDetailBlog } from '../../Actions/BlogsAction'
 
 const DetailNews = () => {
-  const {newId} = useParams()
+  const { newId } = useParams()
   const { detailBlog, isLoading } = useSelector(state => state.detailBlogs);
   const { blogs } = useSelector((state) => state.blogs);
   const history = useHistory();
@@ -15,7 +15,7 @@ const DetailNews = () => {
   const handleClick = (item) => {
     history.push(`/new/${item._id}`)
   }
-  useEffect(() => {
+  useLayoutEffect(() => {
     dispatch(getDetailBlog(newId))
   }, [newId]);
   return (
