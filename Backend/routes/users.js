@@ -40,6 +40,6 @@ router.delete("/admin/:id", authMiddleware.authorizeRole, userControllers.delete
 // Get Profile
 router.route("/me/profile").get(authMiddleware.verifyToken, userControllers.getUserProfile);
 // Update profile
-router.put("/me/profile", authMiddleware.verifyToken, userControllers.updateProfile)
+router.put("/me/profile", authMiddleware.verifyToken, userControllers.updateProfile);
 
 module.exports = router;

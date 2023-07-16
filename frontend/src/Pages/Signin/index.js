@@ -54,7 +54,7 @@ function Signin(props) {
       history.push("/");
     }
   return (
-    <div className="SignIn mt-5">
+    <div className="SignIn my-5">
      
     <div className="signin-label">
       <div className="label_img">
@@ -117,7 +117,7 @@ function Signin(props) {
                   Sign in
                 </button>
             </div>
-            <Link to='/forgot' style={{textDecoration: "none", marginTop: "20px"}}>Forget Password ?</Link>
+            <Link to='/forgot-password' style={{textDecoration: "none", marginTop: "20px"}}>Forget Password ?</Link>
             <div>
                <p >Don't have account ? <span><Link to='/sign-up' style={{textDecoration: "none"}}>Sign up</Link></span></p>
             </div>

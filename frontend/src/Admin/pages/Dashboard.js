@@ -100,10 +100,25 @@ function Dashboard() {
     {
       title: "Guest Number",
       dataIndex: "numOfGuest",
+      sorter: (a, b) => a.numOfGuest - b.numOfGuest,
+      sortDirections: ['descend', 'ascend'],
     },
     {
       title: "Order Status",
       dataIndex: "orderStatus",
+      filters: [
+        {
+          text: 'Processing',
+          value: 'Processing',
+        },
+        {
+          text: 'Approved',
+          value: 'Approved',
+        }
+      ],
+      onFilter: (value, record) => record.orderStatus.includes(value),
+      filterMode: 'tree',
+      filterSearch: true,
       render: (orderStatus, _) => (
         <Tag color={orderStatus === "Processing" ? "orange" : "green"}>{orderStatus.toUpperCase()}</Tag>
       )
@@ -111,15 +126,20 @@ function Dashboard() {
     {
       title: "Tax Price",
       dataIndex: "taxPrice",
+      sorter: (a, b) => a.taxPrice - b.taxPrice,
+      sortDirections: ['descend', 'ascend'],
     },
     {
       title: "Total Price",
       dataIndex: "totalPrice",
+      sorter: (a, b) => a.totalPrice - b.totalPrice,
+      sortDirections: ['descend', 'ascend'],
     },
     {
       title: "Paid At",
       dataIndex: "paidAt",
-      render: (value, record) => (
+      sorter: (a, b) => a.paidAt.localeCompare(b.paidAt),
+      render: (value, _) => (
         <div>{dayjs(value).format(dateFormat)}</div>
       )
     }
@@ -204,32 +224,32 @@ function Dashboard() {
       </div>
 
       <div className='d-flex justify-content-between align-content-center gap-3'>
-          {Object.entries(revenue).map(([year, value]) => {
-            return (
-              Object.entries(value).map(([month, data], idx) => (
-                <div key ={idx} className='d-flex flex-grow-1 justify-content-between align-o bg-white rounded-3 p-3'>
-                  <div>
-                    <p>Total</p> <h4 className='sub-title'>${data}</h4>
-                  </div>
-                  <div className="d-flex flex-column align-items-end">
-                    <h6 style={styleIndex(diff[year][month])}>{arrowOrientation(diff[year][month])} {diff[year][month]}%</h6>
-                    <p className='desc'>{new Date(year, month).toLocaleString('default', {month: "long", year: "numeric"})}</p>
-                  </div>
+        {Object.entries(revenue).map(([year, value]) => {
+          return (
+            Object.entries(value).map(([month, data], idx) => (
+              <div key={idx} className='d-flex flex-grow-1 justify-content-between align-o bg-white rounded-3 p-3'>
+                <div>
+                  <p>Total</p> <h4 className='sub-title'>${data}</h4>
                 </div>
-                  )))
-          })}
+                <div className="d-flex flex-column align-items-end">
+                  <h6 style={styleIndex(diff[year][month])}>{arrowOrientation(diff[year][month])} {diff[year][month]}%</h6>
+                  <p className='desc'>{new Date(year, month).toLocaleString('default', { month: "long", year: "numeric" })}</p>
+                </div>
+              </div>
+            )))
+        })}
       </div>
 
-        <div className='mt-3'>
-          <h3 className='my-2 title'>Income Statistics</h3>
-          <Column {...config} />
-        </div>
-        <div className='mt-3'>
-          <h3 className='my-2 title'>Recent Orders</h3>
-          <Table columns={columns} dataSource={orders} rowKey={(record) => record._id}/>
-        </div>
+      <div className='mt-3'>
+        <h3 className='my-2 title'>Income Statistics</h3>
+        <Column {...config} />
       </div>
-      )
+      <div className='mt-3'>
+        <h3 className='my-2 title'>Recent Orders</h3>
+        <Table columns={columns} dataSource={orders} rowKey={(record) => record._id} />
+      </div>
+    </div>
+  )
 }
 
-      export default Dashboard
+export default Dashboard

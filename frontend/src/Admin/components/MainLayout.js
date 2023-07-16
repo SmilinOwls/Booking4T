@@ -14,7 +14,7 @@ import { IoIosNotifications } from 'react-icons/io';
 import './index.css';
 import { user } from '../utils/config';
 import { Redirect }  from 'react-router-dom';
-import { Button, Layout, Menu, theme } from 'antd';
+import { Button, Layout, Menu, Result, theme } from 'antd';
 import { useLocation } from 'react-router-dom';
 const { Header, Sider, Content } = Layout;
 
@@ -22,7 +22,13 @@ function MainLayout({children}) {
   const { pathname } = useLocation();
   const [collapsed, setCollapsed] = useState(false);
   const history = useHistory();
-  if(user === null || !user.isAdmin) return (<Redirect to="/" replace/>);
+  if(user === null || !user.isAdmin) return (
+  <Result
+    status="403"
+    title="403"
+    subTitle="Sorry, you are not authorized to access this page."
+    extra={<Button type="primary" onClick={() => history.push("/")}>Back Home</Button>}
+  />);
   const {
     token: { colorBgContainer },
   } = theme.useToken();

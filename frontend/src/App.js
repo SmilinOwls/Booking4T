@@ -29,8 +29,10 @@ import Room from './Admin/pages/Room/Room';
 import OrderDetail from './Admin/pages/Order/OrderDetail';
 import PlaceReview from './Admin/pages/Place/PlaceReview';
 import PageNotFound from './Pages/PageNotFound';
+import ForgotPassword from "./Pages/ForgotPassword";
+import ResetPassword from "./Pages/ResetPassword";
 
-import {user} from './Admin/utils/config';
+const user = localStorage.getItem("user");
 
 function App() {
   return (
@@ -106,18 +108,28 @@ function App() {
               </Route>
 
               <Route path="/sign-up">
-                <AppLayout userAuth={user}>
+                <AppLayout userAuth={user || ''}>
                   <Signup />
                 </AppLayout>
               </Route>
               <Route path="/sign-in" exact>
-                <AppLayout userAuth={user}>
+                <AppLayout userAuth={user || ''}>
                   <Signin />
                 </AppLayout>
               </Route>
               <Route path="/logout">
                 <AppLayout userAuth={user}>
                   <LogOut />
+                </AppLayout>
+              </Route>
+              <Route path="/forgot-password">
+                <AppLayout userAuth={user || ''}>
+                  <ForgotPassword />
+                </AppLayout>
+              </Route>
+              <Route path="/activenewpass">
+                <AppLayout userAuth={user || ''}>
+                  <ResetPassword />
                 </AppLayout>
               </Route>
               <Route path="/admin/dashboard" exact>

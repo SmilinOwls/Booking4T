@@ -389,10 +389,10 @@ function OrderDetail({ actions }) {
       </div>
 
       <Modal title="System Message" open={isModal} onCancel={() => setModal(false)} footer={[
-        <Button onClick={() => history.push('/admin/book')} key="link">
+        <Button onClick={() => history.push('/admin/book')} key="link" type="primary">
           Return
         </Button>,
-        <Button key="btn" onClick={() => setModal(false)} type="primary">OK</Button>,
+        <Button key="btn" onClick={() => setModal(false)} type="default">Add Another</Button>,
       ]}
       >
         <p>Update Order Successfully..</p>
